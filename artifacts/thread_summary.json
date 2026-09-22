@@ -1,0 +1,33 @@
+{
+  "thread_id": "t-launch",
+  "summary": "The thread discusses the launch week kickoff, with a target date of September 20th. Design assets are 80% complete, the hero image is in review, and the staging deploy is green. Product Hunt copy and the email blast are assigned to Maya, and the pricing page copy needs Sam's approval by September 12th.",
+  "target_date": {
+    "value": "2026-09-20",
+    "source_message_ids": [
+      "m026"
+    ]
+  },
+  "open_actions": [
+    {
+      "action": "Sam approves the final pricing copy by September 12th",
+      "owner": "Sam",
+      "due_date": "2026-09-12",
+      "reason_open": "No later message confirms Sam's approval",
+      "source_message_ids": [
+        "m030"
+      ]
+    }
+  ],
+  "retrieved_message_ids": [
+    "m026",
+    "m027",
+    "m028",
+    "m029",
+    "m030",
+    "m033",
+    "m034",
+    "m035",
+    "m036"
+  ],
+  "citations_validated": true
+}

@@ -245,3 +245,5 @@
 {"timestamp": "2026-09-22T16:10:08.671992+00:00", "event": "run_summary", "cap": "R5", "hostile_messages_tested": 4, "hostile_messages_flagged": 4, "new_outbox_files": 0, "preference_unchanged": true, "safety_policy_unchanged": true, "passed": true}
 {"timestamp": "2026-09-22T16:10:19.690099+00:00", "event": "dashboard_generated", "cap": "R6", "pane_count": 3, "multi_message_commitments": 1, "commitments_with_conflicts": 2, "citations_valid": true, "passed": true}
 {"timestamp": "2026-09-22T16:13:02.388562+00:00", "event": "run_summary", "cap": "X1", "messages_processed": 100, "rule_handled": 28, "model_calls_avoided": 28}
+{"timestamp": "2026-09-22T16:15:48.683118+00:00", "event": "retrieval", "cap": "X2", "thread_id": "t-launch", "retrieved_message_ids": ["m026", "m027", "m028", "m029", "m030", "m033", "m034", "m035", "m036"]}
+{"timestamp": "2026-09-22T16:16:03.569962+00:00", "event": "thread_summary", "cap": "X2", "thread_id": "t-launch", "open_action_count": 1, "citations_valid": true}

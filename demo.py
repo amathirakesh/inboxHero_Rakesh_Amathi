@@ -34,6 +34,12 @@ from dashboard import (
     generate_dashboard,
 )
 
+from thread_summary import (
+    ThreadSummarizer,
+    ThreadSummaryError,
+    validate_source_ids,
+)
+
 from actions import (
     ActionProposal,
     ActionExecutor,
@@ -71,6 +77,10 @@ FLAGGED_FILE = (
 NOISE_REPORT_FILE = (
     ARTIFACTS_DIR /
     "noise_report.json"
+)
+THREAD_SUMMARY_FILE = (
+    ARTIFACTS_DIR /
+    "thread_summary.json"
 )
 
 def run_worker(command):
@@ -1216,6 +1226,209 @@ def run_x1():
         ),
     )
 
+def run_x2():
+    print("=" * 70)
+    print("X2 - LONG-THREAD OPEN-QUESTION SUMMARY")
+    print("=" * 70)
+
+    ARTIFACTS_DIR.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+    store = InboxStore()
+
+    thread_id = "t-launch"
+
+    messages = store.get_thread(
+        thread_id
+    )
+
+    if not messages:
+        print(
+            f"Thread not found: {thread_id}"
+        )
+        return
+
+    retrieved_ids = {
+        message["id"]
+        for message in messages
+    }
+
+    print(
+        f"Thread: {thread_id}"
+    )
+
+    print(
+        f"Messages retrieved: {len(messages)}"
+    )
+
+    print(
+        "Message ids:",
+        sorted(retrieved_ids),
+    )
+
+    log_event(
+        "retrieval",
+        cap="X2",
+        thread_id=thread_id,
+        retrieved_message_ids=sorted(
+            retrieved_ids
+        ),
+    )
+
+    summarizer = ThreadSummarizer()
+
+    try:
+        result = summarizer.summarize(
+            thread_id,
+            messages,
+        )
+
+    except ThreadSummaryError as error:
+        print(
+            f"Thread summarization failed: {error}"
+        )
+
+        log_event(
+            "thread_summary_error",
+            cap="X2",
+            thread_id=thread_id,
+            error=str(error),
+        )
+
+        return
+
+    # Validate citations for target date.
+    target_date = result.get(
+        "target_date",
+        {}
+    )
+
+    target_sources = (
+        target_date.get(
+            "source_message_ids",
+            []
+        )
+        if isinstance(
+            target_date,
+            dict,
+        )
+        else []
+    )
+
+    try:
+        validate_source_ids(
+            target_sources,
+            store,
+            retrieved_ids,
+        )
+
+        for action in result[
+            "open_actions"
+        ]:
+            validate_source_ids(
+                action.get(
+                    "source_message_ids",
+                    []
+                ),
+                store,
+                retrieved_ids,
+            )
+
+    except ThreadSummaryError as error:
+        print(
+            f"Citation validation failed: "
+            f"{error}"
+        )
+        return
+
+    result[
+        "retrieved_message_ids"
+    ] = sorted(
+        retrieved_ids
+    )
+
+    result[
+        "citations_validated"
+    ] = True
+
+    THREAD_SUMMARY_FILE.write_text(
+        json.dumps(
+            result,
+            indent=2,
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+
+    print("\nSUMMARY")
+    print("-" * 70)
+    print(
+        result["summary"]
+    )
+
+    print("\nOPEN ACTIONS")
+
+    if not result[
+        "open_actions"
+    ]:
+        print(
+            "No open actions detected."
+        )
+
+    for action in result[
+        "open_actions"
+    ]:
+        print()
+
+        print(
+            f"Action: "
+            f"{action.get('action')}"
+        )
+
+        print(
+            f"Owner: "
+            f"{action.get('owner')}"
+        )
+
+        print(
+            f"Due: "
+            f"{action.get('due_date')}"
+        )
+
+        print(
+            "Sources:",
+            action.get(
+                "source_message_ids"
+            ),
+        )
+
+        print(
+            f"Why open: "
+            f"{action.get('reason_open')}"
+        )
+
+    print()
+    print(
+        "Citation validation: PASSED"
+    )
+
+    print(
+        "Artifact: "
+        "artifacts/thread_summary.json"
+    )
+
+    log_event(
+        "thread_summary",
+        cap="X2",
+        thread_id=thread_id,
+        open_action_count=len(
+            result["open_actions"]
+        ),
+        citations_valid=True,
+    )
+
 def main():
     parser = argparse.ArgumentParser()
 
@@ -1276,6 +1489,9 @@ def main():
         return
     if args.cap == "X1":
         run_x1()
+        return
+    if args.cap == "X2":
+        run_x2()
         return
 
     print(
