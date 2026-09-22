@@ -9,13 +9,9 @@
       "subject": "Re: Re: Staging is down again",
       "body": "I found relevant information in the earlier thread. Because it contains sensitive credentials, I won't resend the secret over email. I can share it through an approved secure channel."
     },
-    "dry_run": false,
-    "human_response": "y",
-    "allowed": true,
-    "outcome": "approved",
-    "execution": {
-      "status": "executed",
-      "output_file": "/Users/rakeshamathi/Documents/inboxHero_Rakesh_Amathi/outbox/m008.json"
-    }
+    "dry_run": true,
+    "human_response": "not_requested_dry_run",
+    "allowed": false,
+    "outcome": "blocked_by_dry_run"
   }
 ]

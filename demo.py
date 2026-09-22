@@ -30,6 +30,10 @@ from safety_policy import (
     get_safety_policy,
 )
 
+from dashboard import (
+    generate_dashboard,
+)
+
 from actions import (
     ActionProposal,
     ActionExecutor,
@@ -984,6 +988,118 @@ def run_r5():
         passed=success,
     )
 
+def run_r6():
+    print("=" * 70)
+    print("R6 - THREE-PANE DASHBOARD")
+    print("=" * 70)
+
+    store = InboxStore()
+
+    data = generate_dashboard(
+        store
+    )
+
+    panes = data["panes"]
+
+    print(
+        f"Pane count: {len(panes)}"
+    )
+
+    for pane in panes:
+        print(
+            f"- {pane['title']}: "
+            f"{len(pane['items'])} items"
+        )
+
+    commitments = next(
+        pane["items"]
+        for pane in panes
+        if pane["id"]
+        == "commitments"
+    )
+
+    multi_source = [
+        item
+        for item in commitments
+        if len(
+            item[
+                "source_message_ids"
+            ]
+        ) > 1
+    ]
+
+    conflicts = [
+        item
+        for item in commitments
+        if item[
+            "conflicts_with"
+        ]
+    ]
+
+    citations_valid = all(
+        item.get(
+            "citations_validated"
+        )
+        is True
+        for item in commitments
+    )
+
+    success = (
+        len(panes) == 3
+        and len(
+            multi_source
+        ) >= 1
+        and len(
+            conflicts
+        ) >= 2
+        and citations_valid
+    )
+
+    print()
+    print(
+        "Multi-message commitments: "
+        f"{len(multi_source)}"
+    )
+
+    print(
+        "Commitments involved in "
+        f"conflicts: {len(conflicts)}"
+    )
+
+    print(
+        "Citation validation: "
+        f"{'PASSED' if citations_valid else 'FAILED'}"
+    )
+
+    print(
+        "Dashboard JSON: dashboard.json"
+    )
+
+    print(
+        "Dashboard HTML: dashboard.html"
+    )
+
+    print(
+        "R6 result: "
+        f"{'PASSED' if success else 'FAILED'}"
+    )
+
+    log_event(
+        "dashboard_generated",
+        cap="R6",
+        pane_count=len(
+            panes
+        ),
+        multi_message_commitments=len(
+            multi_source
+        ),
+        commitments_with_conflicts=len(
+            conflicts
+        ),
+        citations_valid=citations_valid,
+        passed=success,
+    )
+
 def main():
     parser = argparse.ArgumentParser()
 
@@ -1038,6 +1154,9 @@ def main():
     
     if args.cap == "R5":
         run_r5()
+        return
+    if args.cap == "R6":
+        run_r6()
         return
 
     print(
