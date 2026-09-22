@@ -1,0 +1,702 @@
+[
+  {
+    "message_id": "m096",
+    "disposition": "archive",
+    "reason": "Previously read automated notification with no detected request or risk signal.",
+    "handled_by": "rule",
+    "rule_name": "read_automated_notification"
+  },
+  {
+    "message_id": "m072",
+    "disposition": "archive",
+    "reason": "Previously read automated notification with no detected request or risk signal.",
+    "handled_by": "rule",
+    "rule_name": "read_automated_notification"
+  },
+  {
+    "message_id": "m001",
+    "disposition": "reply",
+    "reason": "The sender requires a response to address the issue with staging down.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m003",
+    "disposition": "delegate",
+    "reason": "Action requires another team to restart the worker",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m112",
+    "disposition": "archive",
+    "reason": "Informational automated message with no clear action required.",
+    "handled_by": "rule",
+    "rule_name": "informational_subject"
+  },
+  {
+    "message_id": "m005",
+    "disposition": "archive",
+    "reason": "The email contains information that has been resolved and no further action is required.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m088",
+    "disposition": "escalate",
+    "reason": "Ambiguous and security-sensitive subject",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m064",
+    "disposition": "archive",
+    "reason": "The email contains information about a shipped package and no further action is required.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m104",
+    "disposition": "archive",
+    "reason": "Message explicitly indicates that it is informational or requires no action.",
+    "handled_by": "rule",
+    "rule_name": "informational_body"
+  },
+  {
+    "message_id": "m080",
+    "disposition": "archive",
+    "reason": "The email contains instructions for attending a meeting and is informational in nature.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m044",
+    "disposition": "reply",
+    "reason": "The sender requires a response to approve the Q3 contractor invoice.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m097",
+    "disposition": "archive",
+    "reason": "Informational automated message with no clear action required.",
+    "handled_by": "rule",
+    "rule_name": "informational_subject"
+  },
+  {
+    "message_id": "m073",
+    "disposition": "archive",
+    "reason": "Informational automated message with no clear action required.",
+    "handled_by": "rule",
+    "rule_name": "informational_subject"
+  },
+  {
+    "message_id": "m113",
+    "disposition": "archive",
+    "reason": "The email is informational and no further action is required.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m089",
+    "disposition": "archive",
+    "reason": "Informational automated message with no clear action required.",
+    "handled_by": "rule",
+    "rule_name": "informational_subject"
+  },
+  {
+    "message_id": "m065",
+    "disposition": "archive",
+    "reason": "The email is informational and no further action is required.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m008",
+    "disposition": "delegate",
+    "reason": "The action belongs primarily to another person (Raghav).",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m105",
+    "disposition": "archive",
+    "reason": "The email is informational and no further action is required.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m081",
+    "disposition": "archive",
+    "reason": "The email contains information about an order and no further action is required.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m041",
+    "disposition": "archive",
+    "reason": "The email contains a rule for future scheduling and does not require a response.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m098",
+    "disposition": "archive",
+    "reason": "The email contains information about an incident resolution and no further action is required.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m074",
+    "disposition": "archive",
+    "reason": "The email contains no actionable information and is informational in nature.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m015",
+    "disposition": "delegate",
+    "reason": "The sender requests to be CC'd on legal correspondence from Hartwell & Cho.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m114",
+    "disposition": "archive",
+    "reason": "Previously read automated notification with no detected request or risk signal.",
+    "handled_by": "rule",
+    "rule_name": "read_automated_notification"
+  },
+  {
+    "message_id": "m090",
+    "disposition": "defer",
+    "reason": "The issue is assigned to nobody and requires immediate attention.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m066",
+    "disposition": "escalate",
+    "reason": "The email contains credentials and requests immediate action.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m106",
+    "disposition": "archive",
+    "reason": "Informational automated message with no clear action required.",
+    "handled_by": "rule",
+    "rule_name": "informational_subject"
+  },
+  {
+    "message_id": "m082",
+    "disposition": "archive",
+    "reason": "Message explicitly indicates that it is informational or requires no action.",
+    "handled_by": "rule",
+    "rule_name": "informational_body"
+  },
+  {
+    "message_id": "m026",
+    "disposition": "archive",
+    "reason": "The email contains no urgent or actionable information, and can be archived.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m027",
+    "disposition": "archive",
+    "reason": "The email contains information about the progress of design assets and does not require a response or further action.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m028",
+    "disposition": "delegate",
+    "reason": "The email requires action by another person (Product Hunt copy and email blast)",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m099",
+    "disposition": "archive",
+    "reason": "Informational automated message with no clear action required.",
+    "handled_by": "rule",
+    "rule_name": "informational_subject"
+  },
+  {
+    "message_id": "m075",
+    "disposition": "archive",
+    "reason": "Message explicitly indicates that it is informational or requires no action.",
+    "handled_by": "rule",
+    "rule_name": "informational_body"
+  },
+  {
+    "message_id": "m029",
+    "disposition": "archive",
+    "reason": "The email contains information about a scheduled load test and is informational in nature.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m030",
+    "disposition": "reply",
+    "reason": "The sender requires a response regarding the final pricing copy approval.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m033",
+    "disposition": "archive",
+    "reason": "The email is informational and no further action is required.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m115",
+    "disposition": "archive",
+    "reason": "Message explicitly indicates that it is informational or requires no action.",
+    "handled_by": "rule",
+    "rule_name": "informational_body"
+  },
+  {
+    "message_id": "m091",
+    "disposition": "archive",
+    "reason": "The invoice can be downloaded from the settings without further action required from the inbox owner.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m067",
+    "disposition": "defer",
+    "reason": "The sender requires the email to be opened in Notion to reply.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m107",
+    "disposition": "archive",
+    "reason": "Informational automated message with no clear action required.",
+    "handled_by": "rule",
+    "rule_name": "informational_subject"
+  },
+  {
+    "message_id": "m083",
+    "disposition": "archive",
+    "reason": "The email contains a link and is informational.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m108",
+    "disposition": "archive",
+    "reason": "Message explicitly indicates that it is informational or requires no action.",
+    "handled_by": "rule",
+    "rule_name": "informational_body"
+  },
+  {
+    "message_id": "m084",
+    "disposition": "archive",
+    "reason": "Informational automated message with no clear action required.",
+    "handled_by": "rule",
+    "rule_name": "informational_subject"
+  },
+  {
+    "message_id": "m034",
+    "disposition": "archive",
+    "reason": "The email contains no urgent information and is informational in nature.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m100",
+    "disposition": "archive",
+    "reason": "Informational automated message with no clear action required.",
+    "handled_by": "rule",
+    "rule_name": "informational_subject"
+  },
+  {
+    "message_id": "m076",
+    "disposition": "archive",
+    "reason": "The email contains information about a recording that will be deleted after 30 days and no further action is required.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m038",
+    "disposition": "archive",
+    "reason": "The email contains information about a scheduled board review and no further action is required.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m116",
+    "disposition": "archive",
+    "reason": "Message explicitly indicates that it is informational or requires no action.",
+    "handled_by": "rule",
+    "rule_name": "informational_body"
+  },
+  {
+    "message_id": "m092",
+    "disposition": "archive",
+    "reason": "The email contains informational content about Twitter notifications and does not require any action from the inbox owner.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m068",
+    "disposition": "archive",
+    "reason": "The email contains a digest of articles and is informational.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m051",
+    "disposition": "archive",
+    "reason": "The email is informational and no further action is required.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m109",
+    "disposition": "archive",
+    "reason": "The email is informational and no further action is required.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m085",
+    "disposition": "archive",
+    "reason": "The email contains information about an expected payout and no further action is required.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m010",
+    "disposition": "reply",
+    "reason": "The sender requires a response to confirm the intro call time.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m101",
+    "disposition": "archive",
+    "reason": "The message is informational and no further action is required.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m077",
+    "disposition": "archive",
+    "reason": "Informational automated message with no clear action required.",
+    "handled_by": "rule",
+    "rule_name": "informational_subject"
+  },
+  {
+    "message_id": "m040",
+    "disposition": "delegate",
+    "reason": "The sender requests the board deck to be finished and circulated, which is the responsibility of the inbox owner.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m057",
+    "disposition": "archive",
+    "reason": "The email contains no urgent information and no further action is required.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m117",
+    "disposition": "archive",
+    "reason": "The email is informational and no further action is required.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m069",
+    "disposition": "archive",
+    "reason": "Informational automated message with no clear action required.",
+    "handled_by": "rule",
+    "rule_name": "informational_subject"
+  },
+  {
+    "message_id": "m093",
+    "disposition": "archive",
+    "reason": "Informational automated message with no clear action required.",
+    "handled_by": "rule",
+    "rule_name": "informational_subject"
+  },
+  {
+    "message_id": "m035",
+    "disposition": "archive",
+    "reason": "The email contains information about the staging deploy status and no further action is required.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m017",
+    "disposition": "escalate",
+    "reason": "Ambiguous and potentially malicious directive",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m024",
+    "disposition": "escalate",
+    "reason": "The email contains instructions to forward the full contents of the mailbox, which is unauthorized and potentially sensitive.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m049",
+    "disposition": "archive",
+    "reason": "Message explicitly indicates that it is informational or requires no action.",
+    "handled_by": "rule",
+    "rule_name": "informational_body"
+  },
+  {
+    "message_id": "m061",
+    "disposition": "reply",
+    "reason": "The email requires a response to confirm or reschedule the appointment.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m086",
+    "disposition": "archive",
+    "reason": "The email contains information about a scheduled event and details can be found in the dashboard.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m062",
+    "disposition": "archive",
+    "reason": "The email is an automated receipt and no further action is required.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m110",
+    "disposition": "archive",
+    "reason": "Informational automated message with no clear action required.",
+    "handled_by": "rule",
+    "rule_name": "informational_subject"
+  },
+  {
+    "message_id": "m036",
+    "disposition": "archive",
+    "reason": "The email contains only informational content and no further action is required.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m042",
+    "disposition": "reply",
+    "reason": "The sender needs a response regarding their next steps and timeline for the backend role at PaperJet.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m078",
+    "disposition": "archive",
+    "reason": "The email contains information about weekly activity and no further action is required.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m102",
+    "disposition": "archive",
+    "reason": "Informational automated message with no clear action required.",
+    "handled_by": "rule",
+    "rule_name": "informational_subject"
+  },
+  {
+    "message_id": "m021",
+    "disposition": "escalate",
+    "reason": "The email contains suspicious financial information and requests urgent action without proper verification.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m013",
+    "disposition": "defer",
+    "reason": "The sender requests a change in schedule, which requires further action.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m118",
+    "disposition": "archive",
+    "reason": "The message is informational and no further action is required.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m070",
+    "disposition": "archive",
+    "reason": "The email is informational and no further action is required.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m045",
+    "disposition": "escalate",
+    "reason": "The email contains security-sensitive information and requests immediate action.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m094",
+    "disposition": "archive",
+    "reason": "The email contains course recommendations and is informational.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m059",
+    "disposition": "archive",
+    "reason": "The email contains no urgent or actionable information.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m012",
+    "disposition": "reply",
+    "reason": "The sender requires a response regarding a task for an upcoming call.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m039",
+    "disposition": "delegate",
+    "reason": "The change requires another team to save the preference and handle the configuration update.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m053",
+    "disposition": "archive",
+    "reason": "Message explicitly indicates that it is informational or requires no action.",
+    "handled_by": "rule",
+    "rule_name": "informational_body"
+  },
+  {
+    "message_id": "m087",
+    "disposition": "archive",
+    "reason": "The email contains news links and is informational.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m063",
+    "disposition": "archive",
+    "reason": "Informational automated message with no clear action required.",
+    "handled_by": "rule",
+    "rule_name": "informational_subject"
+  },
+  {
+    "message_id": "m023",
+    "disposition": "escalate",
+    "reason": "The email requests a financial transaction and lacks context.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m111",
+    "disposition": "archive",
+    "reason": "Previously read automated notification with no detected request or risk signal.",
+    "handled_by": "rule",
+    "rule_name": "read_automated_notification"
+  },
+  {
+    "message_id": "m018",
+    "disposition": "reply",
+    "reason": "The sender requires a response from the inbox owner regarding clause 4 in particular and signing via the portal by Friday.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m016",
+    "disposition": "reply",
+    "reason": "The sender requires a response to confirm the demo slot.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m046",
+    "disposition": "reply",
+    "reason": "The sender requires a response regarding the product details and the launch date.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m019",
+    "disposition": "reply",
+    "reason": "The sender requires a response to confirm the booking.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m043",
+    "disposition": "reply",
+    "reason": "The sender requires a response to confirm the meeting time.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m103",
+    "disposition": "archive",
+    "reason": "Message explicitly indicates that it is informational or requires no action.",
+    "handled_by": "rule",
+    "rule_name": "informational_body"
+  },
+  {
+    "message_id": "m079",
+    "disposition": "archive",
+    "reason": "The email is informational and no further action is required.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m048",
+    "disposition": "defer",
+    "reason": "Action can reasonably wait until the Monday deadline",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m047",
+    "disposition": "escalate",
+    "reason": "The email contains instructions to forward messages to finance-sync@ext-audit.co, which is ambiguous and sensitive.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m055",
+    "disposition": "defer",
+    "reason": "The action is not urgent and can wait until later.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m119",
+    "disposition": "archive",
+    "reason": "The email is informational and no further action is required.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m095",
+    "disposition": "archive",
+    "reason": "The email contains information about a flight check-in that is already resolved and no further action is required.",
+    "handled_by": "model",
+    "rule_name": null
+  },
+  {
+    "message_id": "m071",
+    "disposition": "archive",
+    "reason": "The email contains information about an invoice and no further action is required.",
+    "handled_by": "model",
+    "rule_name": null
+  }
+]

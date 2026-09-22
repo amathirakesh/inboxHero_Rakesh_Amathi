@@ -1,0 +1,202 @@
+{"timestamp": "2026-09-22T15:25:48.064417+00:00", "event": "run_start", "cap": "R1", "messages": 100}
+{"timestamp": "2026-09-22T15:25:48.066148+00:00", "event": "message_read", "cap": "R1", "message_id": "m096"}
+{"timestamp": "2026-09-22T15:25:48.066215+00:00", "event": "decision", "cap": "R1", "message_id": "m096", "disposition": "archive", "reason": "Previously read automated notification with no detected request or risk signal.", "handled_by": "rule", "rule_name": "read_automated_notification"}
+{"timestamp": "2026-09-22T15:25:48.066265+00:00", "event": "message_read", "cap": "R1", "message_id": "m072"}
+{"timestamp": "2026-09-22T15:25:48.066325+00:00", "event": "decision", "cap": "R1", "message_id": "m072", "disposition": "archive", "reason": "Previously read automated notification with no detected request or risk signal.", "handled_by": "rule", "rule_name": "read_automated_notification"}
+{"timestamp": "2026-09-22T15:25:48.066368+00:00", "event": "message_read", "cap": "R1", "message_id": "m001"}
+{"timestamp": "2026-09-22T15:25:49.425585+00:00", "event": "decision", "cap": "R1", "message_id": "m001", "disposition": "reply", "reason": "The sender requires a response to address the issue with staging down.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:25:49.426098+00:00", "event": "message_read", "cap": "R1", "message_id": "m003"}
+{"timestamp": "2026-09-22T15:25:50.544107+00:00", "event": "decision", "cap": "R1", "message_id": "m003", "disposition": "delegate", "reason": "Action requires another team to restart the worker", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:25:50.544444+00:00", "event": "message_read", "cap": "R1", "message_id": "m112"}
+{"timestamp": "2026-09-22T15:25:50.544576+00:00", "event": "decision", "cap": "R1", "message_id": "m112", "disposition": "archive", "reason": "Informational automated message with no clear action required.", "handled_by": "rule", "rule_name": "informational_subject"}
+{"timestamp": "2026-09-22T15:25:50.544669+00:00", "event": "message_read", "cap": "R1", "message_id": "m005"}
+{"timestamp": "2026-09-22T15:25:51.640559+00:00", "event": "decision", "cap": "R1", "message_id": "m005", "disposition": "archive", "reason": "The email contains information that has been resolved and no further action is required.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:25:51.641061+00:00", "event": "message_read", "cap": "R1", "message_id": "m088"}
+{"timestamp": "2026-09-22T15:25:52.626245+00:00", "event": "decision", "cap": "R1", "message_id": "m088", "disposition": "escalate", "reason": "Ambiguous and security-sensitive subject", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:25:52.626461+00:00", "event": "message_read", "cap": "R1", "message_id": "m064"}
+{"timestamp": "2026-09-22T15:25:53.782374+00:00", "event": "decision", "cap": "R1", "message_id": "m064", "disposition": "archive", "reason": "The email contains information about a shipped package and no further action is required.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:25:53.782697+00:00", "event": "message_read", "cap": "R1", "message_id": "m104"}
+{"timestamp": "2026-09-22T15:25:53.782982+00:00", "event": "decision", "cap": "R1", "message_id": "m104", "disposition": "archive", "reason": "Message explicitly indicates that it is informational or requires no action.", "handled_by": "rule", "rule_name": "informational_body"}
+{"timestamp": "2026-09-22T15:25:53.783153+00:00", "event": "message_read", "cap": "R1", "message_id": "m080"}
+{"timestamp": "2026-09-22T15:25:54.978176+00:00", "event": "decision", "cap": "R1", "message_id": "m080", "disposition": "archive", "reason": "The email contains instructions for attending a meeting and is informational in nature.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:25:54.981014+00:00", "event": "message_read", "cap": "R1", "message_id": "m044"}
+{"timestamp": "2026-09-22T15:25:56.109230+00:00", "event": "decision", "cap": "R1", "message_id": "m044", "disposition": "reply", "reason": "The sender requires a response to approve the Q3 contractor invoice.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:25:56.109630+00:00", "event": "message_read", "cap": "R1", "message_id": "m097"}
+{"timestamp": "2026-09-22T15:25:56.109787+00:00", "event": "decision", "cap": "R1", "message_id": "m097", "disposition": "archive", "reason": "Informational automated message with no clear action required.", "handled_by": "rule", "rule_name": "informational_subject"}
+{"timestamp": "2026-09-22T15:25:56.109942+00:00", "event": "message_read", "cap": "R1", "message_id": "m073"}
+{"timestamp": "2026-09-22T15:25:56.110141+00:00", "event": "decision", "cap": "R1", "message_id": "m073", "disposition": "archive", "reason": "Informational automated message with no clear action required.", "handled_by": "rule", "rule_name": "informational_subject"}
+{"timestamp": "2026-09-22T15:25:56.110279+00:00", "event": "message_read", "cap": "R1", "message_id": "m113"}
+{"timestamp": "2026-09-22T15:25:57.175707+00:00", "event": "decision", "cap": "R1", "message_id": "m113", "disposition": "archive", "reason": "The email is informational and no further action is required.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:25:57.176258+00:00", "event": "message_read", "cap": "R1", "message_id": "m089"}
+{"timestamp": "2026-09-22T15:25:57.176431+00:00", "event": "decision", "cap": "R1", "message_id": "m089", "disposition": "archive", "reason": "Informational automated message with no clear action required.", "handled_by": "rule", "rule_name": "informational_subject"}
+{"timestamp": "2026-09-22T15:25:57.176552+00:00", "event": "message_read", "cap": "R1", "message_id": "m065"}
+{"timestamp": "2026-09-22T15:25:58.237492+00:00", "event": "decision", "cap": "R1", "message_id": "m065", "disposition": "archive", "reason": "The email is informational and no further action is required.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:25:58.237877+00:00", "event": "message_read", "cap": "R1", "message_id": "m008"}
+{"timestamp": "2026-09-22T15:25:59.446000+00:00", "event": "decision", "cap": "R1", "message_id": "m008", "disposition": "delegate", "reason": "The action belongs primarily to another person (Raghav).", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:25:59.446418+00:00", "event": "message_read", "cap": "R1", "message_id": "m105"}
+{"timestamp": "2026-09-22T15:26:00.660602+00:00", "event": "decision", "cap": "R1", "message_id": "m105", "disposition": "archive", "reason": "The email is informational and no further action is required.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:00.661269+00:00", "event": "message_read", "cap": "R1", "message_id": "m081"}
+{"timestamp": "2026-09-22T15:26:01.873505+00:00", "event": "decision", "cap": "R1", "message_id": "m081", "disposition": "archive", "reason": "The email contains information about an order and no further action is required.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:01.875127+00:00", "event": "message_read", "cap": "R1", "message_id": "m041"}
+{"timestamp": "2026-09-22T15:26:03.132298+00:00", "event": "decision", "cap": "R1", "message_id": "m041", "disposition": "archive", "reason": "The email contains a rule for future scheduling and does not require a response.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:03.132549+00:00", "event": "message_read", "cap": "R1", "message_id": "m098"}
+{"timestamp": "2026-09-22T15:26:04.376782+00:00", "event": "decision", "cap": "R1", "message_id": "m098", "disposition": "archive", "reason": "The email contains information about an incident resolution and no further action is required.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:04.378093+00:00", "event": "message_read", "cap": "R1", "message_id": "m074"}
+{"timestamp": "2026-09-22T15:26:05.530764+00:00", "event": "decision", "cap": "R1", "message_id": "m074", "disposition": "archive", "reason": "The email contains no actionable information and is informational in nature.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:05.531195+00:00", "event": "message_read", "cap": "R1", "message_id": "m015"}
+{"timestamp": "2026-09-22T15:26:07.101007+00:00", "event": "decision", "cap": "R1", "message_id": "m015", "disposition": "delegate", "reason": "The sender requests to be CC'd on legal correspondence from Hartwell & Cho.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:07.101406+00:00", "event": "message_read", "cap": "R1", "message_id": "m114"}
+{"timestamp": "2026-09-22T15:26:07.101568+00:00", "event": "decision", "cap": "R1", "message_id": "m114", "disposition": "archive", "reason": "Previously read automated notification with no detected request or risk signal.", "handled_by": "rule", "rule_name": "read_automated_notification"}
+{"timestamp": "2026-09-22T15:26:07.101670+00:00", "event": "message_read", "cap": "R1", "message_id": "m090"}
+{"timestamp": "2026-09-22T15:26:08.182495+00:00", "event": "decision", "cap": "R1", "message_id": "m090", "disposition": "defer", "reason": "The issue is assigned to nobody and requires immediate attention.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:08.183094+00:00", "event": "message_read", "cap": "R1", "message_id": "m066"}
+{"timestamp": "2026-09-22T15:26:09.349579+00:00", "event": "decision", "cap": "R1", "message_id": "m066", "disposition": "escalate", "reason": "The email contains credentials and requests immediate action.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:09.351007+00:00", "event": "message_read", "cap": "R1", "message_id": "m106"}
+{"timestamp": "2026-09-22T15:26:09.351188+00:00", "event": "decision", "cap": "R1", "message_id": "m106", "disposition": "archive", "reason": "Informational automated message with no clear action required.", "handled_by": "rule", "rule_name": "informational_subject"}
+{"timestamp": "2026-09-22T15:26:09.351273+00:00", "event": "message_read", "cap": "R1", "message_id": "m082"}
+{"timestamp": "2026-09-22T15:26:09.351362+00:00", "event": "decision", "cap": "R1", "message_id": "m082", "disposition": "archive", "reason": "Message explicitly indicates that it is informational or requires no action.", "handled_by": "rule", "rule_name": "informational_body"}
+{"timestamp": "2026-09-22T15:26:09.351425+00:00", "event": "message_read", "cap": "R1", "message_id": "m026"}
+{"timestamp": "2026-09-22T15:26:10.634981+00:00", "event": "decision", "cap": "R1", "message_id": "m026", "disposition": "archive", "reason": "The email contains no urgent or actionable information, and can be archived.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:10.636008+00:00", "event": "message_read", "cap": "R1", "message_id": "m027"}
+{"timestamp": "2026-09-22T15:26:11.906221+00:00", "event": "decision", "cap": "R1", "message_id": "m027", "disposition": "archive", "reason": "The email contains information about the progress of design assets and does not require a response or further action.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:11.906818+00:00", "event": "message_read", "cap": "R1", "message_id": "m028"}
+{"timestamp": "2026-09-22T15:26:12.980021+00:00", "event": "decision", "cap": "R1", "message_id": "m028", "disposition": "delegate", "reason": "The email requires action by another person (Product Hunt copy and email blast)", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:12.980358+00:00", "event": "message_read", "cap": "R1", "message_id": "m099"}
+{"timestamp": "2026-09-22T15:26:12.980478+00:00", "event": "decision", "cap": "R1", "message_id": "m099", "disposition": "archive", "reason": "Informational automated message with no clear action required.", "handled_by": "rule", "rule_name": "informational_subject"}
+{"timestamp": "2026-09-22T15:26:12.980577+00:00", "event": "message_read", "cap": "R1", "message_id": "m075"}
+{"timestamp": "2026-09-22T15:26:12.980660+00:00", "event": "decision", "cap": "R1", "message_id": "m075", "disposition": "archive", "reason": "Message explicitly indicates that it is informational or requires no action.", "handled_by": "rule", "rule_name": "informational_body"}
+{"timestamp": "2026-09-22T15:26:12.980754+00:00", "event": "message_read", "cap": "R1", "message_id": "m029"}
+{"timestamp": "2026-09-22T15:26:14.156430+00:00", "event": "decision", "cap": "R1", "message_id": "m029", "disposition": "archive", "reason": "The email contains information about a scheduled load test and is informational in nature.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:14.158305+00:00", "event": "message_read", "cap": "R1", "message_id": "m030"}
+{"timestamp": "2026-09-22T15:26:15.340391+00:00", "event": "decision", "cap": "R1", "message_id": "m030", "disposition": "reply", "reason": "The sender requires a response regarding the final pricing copy approval.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:15.340748+00:00", "event": "message_read", "cap": "R1", "message_id": "m033"}
+{"timestamp": "2026-09-22T15:26:16.334438+00:00", "event": "decision", "cap": "R1", "message_id": "m033", "disposition": "archive", "reason": "The email is informational and no further action is required.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:16.334794+00:00", "event": "message_read", "cap": "R1", "message_id": "m115"}
+{"timestamp": "2026-09-22T15:26:16.335030+00:00", "event": "decision", "cap": "R1", "message_id": "m115", "disposition": "archive", "reason": "Message explicitly indicates that it is informational or requires no action.", "handled_by": "rule", "rule_name": "informational_body"}
+{"timestamp": "2026-09-22T15:26:16.335254+00:00", "event": "message_read", "cap": "R1", "message_id": "m091"}
+{"timestamp": "2026-09-22T15:26:17.677564+00:00", "event": "decision", "cap": "R1", "message_id": "m091", "disposition": "archive", "reason": "The invoice can be downloaded from the settings without further action required from the inbox owner.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:17.693991+00:00", "event": "message_read", "cap": "R1", "message_id": "m067"}
+{"timestamp": "2026-09-22T15:26:19.119082+00:00", "event": "decision", "cap": "R1", "message_id": "m067", "disposition": "defer", "reason": "The sender requires the email to be opened in Notion to reply.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:19.122640+00:00", "event": "message_read", "cap": "R1", "message_id": "m107"}
+{"timestamp": "2026-09-22T15:26:19.122815+00:00", "event": "decision", "cap": "R1", "message_id": "m107", "disposition": "archive", "reason": "Informational automated message with no clear action required.", "handled_by": "rule", "rule_name": "informational_subject"}
+{"timestamp": "2026-09-22T15:26:19.122901+00:00", "event": "message_read", "cap": "R1", "message_id": "m083"}
+{"timestamp": "2026-09-22T15:26:20.179060+00:00", "event": "decision", "cap": "R1", "message_id": "m083", "disposition": "archive", "reason": "The email contains a link and is informational.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:20.179634+00:00", "event": "message_read", "cap": "R1", "message_id": "m108"}
+{"timestamp": "2026-09-22T15:26:20.179791+00:00", "event": "decision", "cap": "R1", "message_id": "m108", "disposition": "archive", "reason": "Message explicitly indicates that it is informational or requires no action.", "handled_by": "rule", "rule_name": "informational_body"}
+{"timestamp": "2026-09-22T15:26:20.179894+00:00", "event": "message_read", "cap": "R1", "message_id": "m084"}
+{"timestamp": "2026-09-22T15:26:20.179992+00:00", "event": "decision", "cap": "R1", "message_id": "m084", "disposition": "archive", "reason": "Informational automated message with no clear action required.", "handled_by": "rule", "rule_name": "informational_subject"}
+{"timestamp": "2026-09-22T15:26:20.180076+00:00", "event": "message_read", "cap": "R1", "message_id": "m034"}
+{"timestamp": "2026-09-22T15:26:21.191747+00:00", "event": "decision", "cap": "R1", "message_id": "m034", "disposition": "archive", "reason": "The email contains no urgent information and is informational in nature.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:21.192095+00:00", "event": "message_read", "cap": "R1", "message_id": "m100"}
+{"timestamp": "2026-09-22T15:26:21.192220+00:00", "event": "decision", "cap": "R1", "message_id": "m100", "disposition": "archive", "reason": "Informational automated message with no clear action required.", "handled_by": "rule", "rule_name": "informational_subject"}
+{"timestamp": "2026-09-22T15:26:21.192298+00:00", "event": "message_read", "cap": "R1", "message_id": "m076"}
+{"timestamp": "2026-09-22T15:26:22.587681+00:00", "event": "decision", "cap": "R1", "message_id": "m076", "disposition": "archive", "reason": "The email contains information about a recording that will be deleted after 30 days and no further action is required.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:22.588053+00:00", "event": "message_read", "cap": "R1", "message_id": "m038"}
+{"timestamp": "2026-09-22T15:26:23.781987+00:00", "event": "decision", "cap": "R1", "message_id": "m038", "disposition": "archive", "reason": "The email contains information about a scheduled board review and no further action is required.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:23.782343+00:00", "event": "message_read", "cap": "R1", "message_id": "m116"}
+{"timestamp": "2026-09-22T15:26:23.782480+00:00", "event": "decision", "cap": "R1", "message_id": "m116", "disposition": "archive", "reason": "Message explicitly indicates that it is informational or requires no action.", "handled_by": "rule", "rule_name": "informational_body"}
+{"timestamp": "2026-09-22T15:26:23.782569+00:00", "event": "message_read", "cap": "R1", "message_id": "m092"}
+{"timestamp": "2026-09-22T15:26:25.066204+00:00", "event": "decision", "cap": "R1", "message_id": "m092", "disposition": "archive", "reason": "The email contains informational content about Twitter notifications and does not require any action from the inbox owner.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:25.066672+00:00", "event": "message_read", "cap": "R1", "message_id": "m068"}
+{"timestamp": "2026-09-22T15:26:26.125825+00:00", "event": "decision", "cap": "R1", "message_id": "m068", "disposition": "archive", "reason": "The email contains a digest of articles and is informational.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:26.126154+00:00", "event": "message_read", "cap": "R1", "message_id": "m051"}
+{"timestamp": "2026-09-22T15:26:27.189575+00:00", "event": "decision", "cap": "R1", "message_id": "m051", "disposition": "archive", "reason": "The email is informational and no further action is required.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:27.189934+00:00", "event": "message_read", "cap": "R1", "message_id": "m109"}
+{"timestamp": "2026-09-22T15:26:28.244961+00:00", "event": "decision", "cap": "R1", "message_id": "m109", "disposition": "archive", "reason": "The email is informational and no further action is required.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:28.245252+00:00", "event": "message_read", "cap": "R1", "message_id": "m085"}
+{"timestamp": "2026-09-22T15:26:29.492258+00:00", "event": "decision", "cap": "R1", "message_id": "m085", "disposition": "archive", "reason": "The email contains information about an expected payout and no further action is required.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:29.493662+00:00", "event": "message_read", "cap": "R1", "message_id": "m010"}
+{"timestamp": "2026-09-22T15:26:30.678987+00:00", "event": "decision", "cap": "R1", "message_id": "m010", "disposition": "reply", "reason": "The sender requires a response to confirm the intro call time.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:30.679314+00:00", "event": "message_read", "cap": "R1", "message_id": "m101"}
+{"timestamp": "2026-09-22T15:26:31.783846+00:00", "event": "decision", "cap": "R1", "message_id": "m101", "disposition": "archive", "reason": "The message is informational and no further action is required.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:31.784502+00:00", "event": "message_read", "cap": "R1", "message_id": "m077"}
+{"timestamp": "2026-09-22T15:26:31.784668+00:00", "event": "decision", "cap": "R1", "message_id": "m077", "disposition": "archive", "reason": "Informational automated message with no clear action required.", "handled_by": "rule", "rule_name": "informational_subject"}
+{"timestamp": "2026-09-22T15:26:31.784791+00:00", "event": "message_read", "cap": "R1", "message_id": "m040"}
+{"timestamp": "2026-09-22T15:26:33.198414+00:00", "event": "decision", "cap": "R1", "message_id": "m040", "disposition": "delegate", "reason": "The sender requests the board deck to be finished and circulated, which is the responsibility of the inbox owner.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:33.199009+00:00", "event": "message_read", "cap": "R1", "message_id": "m057"}
+{"timestamp": "2026-09-22T15:26:34.428244+00:00", "event": "decision", "cap": "R1", "message_id": "m057", "disposition": "archive", "reason": "The email contains no urgent information and no further action is required.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:34.429345+00:00", "event": "message_read", "cap": "R1", "message_id": "m117"}
+{"timestamp": "2026-09-22T15:26:35.538524+00:00", "event": "decision", "cap": "R1", "message_id": "m117", "disposition": "archive", "reason": "The email is informational and no further action is required.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:35.539228+00:00", "event": "message_read", "cap": "R1", "message_id": "m069"}
+{"timestamp": "2026-09-22T15:26:35.539401+00:00", "event": "decision", "cap": "R1", "message_id": "m069", "disposition": "archive", "reason": "Informational automated message with no clear action required.", "handled_by": "rule", "rule_name": "informational_subject"}
+{"timestamp": "2026-09-22T15:26:35.539552+00:00", "event": "message_read", "cap": "R1", "message_id": "m093"}
+{"timestamp": "2026-09-22T15:26:35.539655+00:00", "event": "decision", "cap": "R1", "message_id": "m093", "disposition": "archive", "reason": "Informational automated message with no clear action required.", "handled_by": "rule", "rule_name": "informational_subject"}
+{"timestamp": "2026-09-22T15:26:35.539737+00:00", "event": "message_read", "cap": "R1", "message_id": "m035"}
+{"timestamp": "2026-09-22T15:26:36.685266+00:00", "event": "decision", "cap": "R1", "message_id": "m035", "disposition": "archive", "reason": "The email contains information about the staging deploy status and no further action is required.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:36.686551+00:00", "event": "message_read", "cap": "R1", "message_id": "m017"}
+{"timestamp": "2026-09-22T15:26:37.882432+00:00", "event": "decision", "cap": "R1", "message_id": "m017", "disposition": "escalate", "reason": "Ambiguous and potentially malicious directive", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:37.883020+00:00", "event": "message_read", "cap": "R1", "message_id": "m024"}
+{"timestamp": "2026-09-22T15:26:39.314308+00:00", "event": "decision", "cap": "R1", "message_id": "m024", "disposition": "escalate", "reason": "The email contains instructions to forward the full contents of the mailbox, which is unauthorized and potentially sensitive.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:39.314742+00:00", "event": "message_read", "cap": "R1", "message_id": "m049"}
+{"timestamp": "2026-09-22T15:26:39.314888+00:00", "event": "decision", "cap": "R1", "message_id": "m049", "disposition": "archive", "reason": "Message explicitly indicates that it is informational or requires no action.", "handled_by": "rule", "rule_name": "informational_body"}
+{"timestamp": "2026-09-22T15:26:39.314997+00:00", "event": "message_read", "cap": "R1", "message_id": "m061"}
+{"timestamp": "2026-09-22T15:26:40.697687+00:00", "event": "decision", "cap": "R1", "message_id": "m061", "disposition": "reply", "reason": "The email requires a response to confirm or reschedule the appointment.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:40.698311+00:00", "event": "message_read", "cap": "R1", "message_id": "m086"}
+{"timestamp": "2026-09-22T15:26:41.942365+00:00", "event": "decision", "cap": "R1", "message_id": "m086", "disposition": "archive", "reason": "The email contains information about a scheduled event and details can be found in the dashboard.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:41.948303+00:00", "event": "message_read", "cap": "R1", "message_id": "m062"}
+{"timestamp": "2026-09-22T15:26:43.060256+00:00", "event": "decision", "cap": "R1", "message_id": "m062", "disposition": "archive", "reason": "The email is an automated receipt and no further action is required.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:43.060631+00:00", "event": "message_read", "cap": "R1", "message_id": "m110"}
+{"timestamp": "2026-09-22T15:26:43.060770+00:00", "event": "decision", "cap": "R1", "message_id": "m110", "disposition": "archive", "reason": "Informational automated message with no clear action required.", "handled_by": "rule", "rule_name": "informational_subject"}
+{"timestamp": "2026-09-22T15:26:43.060877+00:00", "event": "message_read", "cap": "R1", "message_id": "m036"}
+{"timestamp": "2026-09-22T15:26:44.174852+00:00", "event": "decision", "cap": "R1", "message_id": "m036", "disposition": "archive", "reason": "The email contains only informational content and no further action is required.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:44.175225+00:00", "event": "message_read", "cap": "R1", "message_id": "m042"}
+{"timestamp": "2026-09-22T15:26:45.608476+00:00", "event": "decision", "cap": "R1", "message_id": "m042", "disposition": "reply", "reason": "The sender needs a response regarding their next steps and timeline for the backend role at PaperJet.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:45.609772+00:00", "event": "message_read", "cap": "R1", "message_id": "m078"}
+{"timestamp": "2026-09-22T15:26:46.666157+00:00", "event": "decision", "cap": "R1", "message_id": "m078", "disposition": "archive", "reason": "The email contains information about weekly activity and no further action is required.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:46.667147+00:00", "event": "message_read", "cap": "R1", "message_id": "m102"}
+{"timestamp": "2026-09-22T15:26:46.667382+00:00", "event": "decision", "cap": "R1", "message_id": "m102", "disposition": "archive", "reason": "Informational automated message with no clear action required.", "handled_by": "rule", "rule_name": "informational_subject"}
+{"timestamp": "2026-09-22T15:26:46.667513+00:00", "event": "message_read", "cap": "R1", "message_id": "m021"}
+{"timestamp": "2026-09-22T15:26:48.040836+00:00", "event": "decision", "cap": "R1", "message_id": "m021", "disposition": "escalate", "reason": "The email contains suspicious financial information and requests urgent action without proper verification.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:48.041283+00:00", "event": "message_read", "cap": "R1", "message_id": "m013"}
+{"timestamp": "2026-09-22T15:26:49.258762+00:00", "event": "decision", "cap": "R1", "message_id": "m013", "disposition": "defer", "reason": "The sender requests a change in schedule, which requires further action.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:49.259751+00:00", "event": "message_read", "cap": "R1", "message_id": "m118"}
+{"timestamp": "2026-09-22T15:26:50.316101+00:00", "event": "decision", "cap": "R1", "message_id": "m118", "disposition": "archive", "reason": "The message is informational and no further action is required.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:50.317284+00:00", "event": "message_read", "cap": "R1", "message_id": "m070"}
+{"timestamp": "2026-09-22T15:26:51.408091+00:00", "event": "decision", "cap": "R1", "message_id": "m070", "disposition": "archive", "reason": "The email is informational and no further action is required.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:51.408493+00:00", "event": "message_read", "cap": "R1", "message_id": "m045"}
+{"timestamp": "2026-09-22T15:26:52.624608+00:00", "event": "decision", "cap": "R1", "message_id": "m045", "disposition": "escalate", "reason": "The email contains security-sensitive information and requests immediate action.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:52.625052+00:00", "event": "message_read", "cap": "R1", "message_id": "m094"}
+{"timestamp": "2026-09-22T15:26:53.637878+00:00", "event": "decision", "cap": "R1", "message_id": "m094", "disposition": "archive", "reason": "The email contains course recommendations and is informational.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:53.638412+00:00", "event": "message_read", "cap": "R1", "message_id": "m059"}
+{"timestamp": "2026-09-22T15:26:54.656209+00:00", "event": "decision", "cap": "R1", "message_id": "m059", "disposition": "archive", "reason": "The email contains no urgent or actionable information.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:54.656849+00:00", "event": "message_read", "cap": "R1", "message_id": "m012"}
+{"timestamp": "2026-09-22T15:26:55.773371+00:00", "event": "decision", "cap": "R1", "message_id": "m012", "disposition": "reply", "reason": "The sender requires a response regarding a task for an upcoming call.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:55.773840+00:00", "event": "message_read", "cap": "R1", "message_id": "m039"}
+{"timestamp": "2026-09-22T15:26:57.083215+00:00", "event": "decision", "cap": "R1", "message_id": "m039", "disposition": "delegate", "reason": "The change requires another team to save the preference and handle the configuration update.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:57.083954+00:00", "event": "message_read", "cap": "R1", "message_id": "m053"}
+{"timestamp": "2026-09-22T15:26:57.084161+00:00", "event": "decision", "cap": "R1", "message_id": "m053", "disposition": "archive", "reason": "Message explicitly indicates that it is informational or requires no action.", "handled_by": "rule", "rule_name": "informational_body"}
+{"timestamp": "2026-09-22T15:26:57.084278+00:00", "event": "message_read", "cap": "R1", "message_id": "m087"}
+{"timestamp": "2026-09-22T15:26:58.103089+00:00", "event": "decision", "cap": "R1", "message_id": "m087", "disposition": "archive", "reason": "The email contains news links and is informational.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:58.103544+00:00", "event": "message_read", "cap": "R1", "message_id": "m063"}
+{"timestamp": "2026-09-22T15:26:58.103793+00:00", "event": "decision", "cap": "R1", "message_id": "m063", "disposition": "archive", "reason": "Informational automated message with no clear action required.", "handled_by": "rule", "rule_name": "informational_subject"}
+{"timestamp": "2026-09-22T15:26:58.103961+00:00", "event": "message_read", "cap": "R1", "message_id": "m023"}
+{"timestamp": "2026-09-22T15:26:59.268472+00:00", "event": "decision", "cap": "R1", "message_id": "m023", "disposition": "escalate", "reason": "The email requests a financial transaction and lacks context.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:26:59.268963+00:00", "event": "message_read", "cap": "R1", "message_id": "m111"}
+{"timestamp": "2026-09-22T15:26:59.269181+00:00", "event": "decision", "cap": "R1", "message_id": "m111", "disposition": "archive", "reason": "Previously read automated notification with no detected request or risk signal.", "handled_by": "rule", "rule_name": "read_automated_notification"}
+{"timestamp": "2026-09-22T15:26:59.269363+00:00", "event": "message_read", "cap": "R1", "message_id": "m018"}
+{"timestamp": "2026-09-22T15:27:00.860783+00:00", "event": "decision", "cap": "R1", "message_id": "m018", "disposition": "reply", "reason": "The sender requires a response from the inbox owner regarding clause 4 in particular and signing via the portal by Friday.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:27:00.864139+00:00", "event": "message_read", "cap": "R1", "message_id": "m016"}
+{"timestamp": "2026-09-22T15:27:02.043953+00:00", "event": "decision", "cap": "R1", "message_id": "m016", "disposition": "reply", "reason": "The sender requires a response to confirm the demo slot.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:27:02.045130+00:00", "event": "message_read", "cap": "R1", "message_id": "m046"}
+{"timestamp": "2026-09-22T15:27:03.260909+00:00", "event": "decision", "cap": "R1", "message_id": "m046", "disposition": "reply", "reason": "The sender requires a response regarding the product details and the launch date.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:27:03.261326+00:00", "event": "message_read", "cap": "R1", "message_id": "m019"}
+{"timestamp": "2026-09-22T15:27:04.328039+00:00", "event": "decision", "cap": "R1", "message_id": "m019", "disposition": "reply", "reason": "The sender requires a response to confirm the booking.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:27:04.328545+00:00", "event": "message_read", "cap": "R1", "message_id": "m043"}
+{"timestamp": "2026-09-22T15:27:05.418331+00:00", "event": "decision", "cap": "R1", "message_id": "m043", "disposition": "reply", "reason": "The sender requires a response to confirm the meeting time.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:27:05.418919+00:00", "event": "message_read", "cap": "R1", "message_id": "m103"}
+{"timestamp": "2026-09-22T15:27:05.419156+00:00", "event": "decision", "cap": "R1", "message_id": "m103", "disposition": "archive", "reason": "Message explicitly indicates that it is informational or requires no action.", "handled_by": "rule", "rule_name": "informational_body"}
+{"timestamp": "2026-09-22T15:27:05.419345+00:00", "event": "message_read", "cap": "R1", "message_id": "m079"}
+{"timestamp": "2026-09-22T15:27:06.496985+00:00", "event": "decision", "cap": "R1", "message_id": "m079", "disposition": "archive", "reason": "The email is informational and no further action is required.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:27:06.497377+00:00", "event": "message_read", "cap": "R1", "message_id": "m048"}
+{"timestamp": "2026-09-22T15:27:07.527831+00:00", "event": "decision", "cap": "R1", "message_id": "m048", "disposition": "defer", "reason": "Action can reasonably wait until the Monday deadline", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:27:07.528133+00:00", "event": "message_read", "cap": "R1", "message_id": "m047"}
+{"timestamp": "2026-09-22T15:27:09.278187+00:00", "event": "decision", "cap": "R1", "message_id": "m047", "disposition": "escalate", "reason": "The email contains instructions to forward messages to finance-sync@ext-audit.co, which is ambiguous and sensitive.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:27:09.278931+00:00", "event": "message_read", "cap": "R1", "message_id": "m055"}
+{"timestamp": "2026-09-22T15:27:10.383388+00:00", "event": "decision", "cap": "R1", "message_id": "m055", "disposition": "defer", "reason": "The action is not urgent and can wait until later.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:27:10.383786+00:00", "event": "message_read", "cap": "R1", "message_id": "m119"}
+{"timestamp": "2026-09-22T15:27:11.468117+00:00", "event": "decision", "cap": "R1", "message_id": "m119", "disposition": "archive", "reason": "The email is informational and no further action is required.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:27:11.469804+00:00", "event": "message_read", "cap": "R1", "message_id": "m095"}
+{"timestamp": "2026-09-22T15:27:12.786212+00:00", "event": "decision", "cap": "R1", "message_id": "m095", "disposition": "archive", "reason": "The email contains information about a flight check-in that is already resolved and no further action is required.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:27:12.786608+00:00", "event": "message_read", "cap": "R1", "message_id": "m071"}
+{"timestamp": "2026-09-22T15:27:13.986655+00:00", "event": "decision", "cap": "R1", "message_id": "m071", "disposition": "archive", "reason": "The email contains information about an invoice and no further action is required.", "handled_by": "model", "rule_name": null}
+{"timestamp": "2026-09-22T15:27:13.999973+00:00", "event": "run_summary", "cap": "R1", "messages_processed": 100, "rule_handled": 28, "model_handled": 72, "model_failures": 0, "undecided": 0, "duplicate_decisions": 0}
