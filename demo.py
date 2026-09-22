@@ -11,7 +11,7 @@ from inbox_store import (
 )
 
 from llm_provider import (
-    OllamaProvider,
+    get_provider,
     LLMProviderError,
 )
 
@@ -176,7 +176,7 @@ def run_r1():
     )
 
     store = InboxStore()
-    provider = OllamaProvider()
+    provider = get_provider()
 
     decisions = []
 

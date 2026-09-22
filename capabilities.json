@@ -2,32 +2,33 @@
     "student": "Rakesh Amathi, cert-aai-2026-06-0013",
     "repo": "TBD",
     "system": {
-      "framework": "none",
-"messages_processed": 100,
-"rule_handled": 28,
-"dispositions": [
-  "reply",
-  "archive",
-  "defer",
-  "delegate",
-  "escalate"
-],
-"retrieval": "chronological thread-walk with citation validation; keyword fallback reserved for cross-thread retrieval",
-"irreversible": [
-  "send",
-  "delete",
-  "external_commitment",
-  "financial_action"
-],
-"reversible": [
-  "draft",
-  "archive",
-  "label",
-  "defer",
-  "flag"
-],
-"gate": "dry-run and explicit per-action human approval",
-"preference_demo": "m041 stores no meetings before 11:00; after a process restart the preference changes handling of m043"
+        "framework": "none",
+        "model": "qwen2.5:3b via Ollama for development; Gemini used for final cross-provider verification",
+        "messages_processed": 100,
+        "rule_handled": 28,
+        "dispositions": [
+            "reply",
+            "archive",
+            "defer",
+            "delegate",
+            "escalate"
+        ],
+        "retrieval": "chronological thread-walk with citation validation; keyword fallback reserved for cross-thread retrieval",
+        "irreversible": [
+            "send",
+            "delete",
+            "external_commitment",
+            "financial_action"
+        ],
+        "reversible": [
+            "draft",
+            "archive",
+            "label",
+            "defer",
+            "flag"
+        ],
+        "gate": "dry-run and explicit per-action human approval",
+        "preference_demo": "m041 stores no meetings before 11:00; after a process restart the preference changes handling of m043"
     },
     "capabilities": [
       {
