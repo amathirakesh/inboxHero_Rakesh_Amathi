@@ -3,32 +3,31 @@
     "repo": "TBD",
     "system": {
       "framework": "none",
-      "model": "qwen2.5:3b via Ollama during development; Gemini for final verification",
-      "messages_processed": 100,
-      "rule_handled": 0,
-      "dispositions": [
-        "reply",
-        "archive",
-        "defer",
-        "delegate",
-        "escalate"
-      ],
-      "retrieval": "thread-walk with keyword fallback",
-      "irreversible": [
-        "send",
-        "delete",
-        "external_commitment",
-        "financial_action"
-      ],
-      "reversible": [
-        "draft",
-        "label",
-        "archive",
-        "defer",
-        "flag"
-      ],
-      "gate": "both",
-      "preference_demo": "m041: never accept meetings before 11:00am; later affects m043"
+"messages_processed": 100,
+"rule_handled": 28,
+"dispositions": [
+  "reply",
+  "archive",
+  "defer",
+  "delegate",
+  "escalate"
+],
+"retrieval": "chronological thread-walk with citation validation; keyword fallback reserved for cross-thread retrieval",
+"irreversible": [
+  "send",
+  "delete",
+  "external_commitment",
+  "financial_action"
+],
+"reversible": [
+  "draft",
+  "archive",
+  "label",
+  "defer",
+  "flag"
+],
+"gate": "dry-run and explicit per-action human approval",
+"preference_demo": "m041 stores no meetings before 11:00; after a process restart the preference changes handling of m043"
     },
     "capabilities": [
       {

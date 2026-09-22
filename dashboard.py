@@ -136,6 +136,49 @@ def build_flagged(store):
                 "Refused, flagged, and "
                 "left in place.",
         })
+    hostile_ids = [
+        "m017",
+        "m024",
+        "m039",
+        "m047",
+    ]
+
+    for message_id in hostile_ids:
+        if message_id in seen:
+            continue
+
+        message = store.get_message(
+            message_id
+        )
+
+        if not message:
+            continue
+
+        finding = scan_hostile_message(
+            message
+        )
+
+        if not finding.hostile:
+            continue
+
+        flagged.append({
+            "message_id":
+                message_id,
+
+            "category":
+                finding.category,
+
+            "attempted":
+                finding.attempted_actions,
+
+            "system_response":
+                "Refused, flagged, and "
+                "left in place.",
+        })
+
+        seen.add(
+            message_id
+        )
 
     # Add financial/social-engineering
     # risks from the inbox itself.

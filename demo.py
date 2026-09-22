@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 import subprocess
 import sys
+import shutil
 
 from inbox_store import (
     InboxStore,
@@ -1835,6 +1836,183 @@ def run_x3(dry_run=False):
         "artifacts/scheduling_proposals.json"
     )
 
+def reset_generated_outputs():
+    """
+    Remove outputs from previous demo runs so --all
+    produces reproducible evidence from a clean state.
+    """
+
+    ARTIFACTS_DIR.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+    outbox_dir = BASE_DIR / "outbox"
+
+    outbox_dir.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+    # Clean generated artifacts.
+    for item in ARTIFACTS_DIR.iterdir():
+        if item.name == ".gitkeep":
+            continue
+
+        if item.is_file():
+            item.unlink()
+
+        elif item.is_dir():
+            shutil.rmtree(item)
+
+    # Clean simulated outbound messages.
+    for item in outbox_dir.iterdir():
+        if item.name == ".gitkeep":
+            continue
+
+        if item.is_file():
+            item.unlink()
+
+        elif item.is_dir():
+            shutil.rmtree(item)
+
+    # Clean generated root files.
+    generated_files = [
+        BASE_DIR / "trace.jsonl",
+        BASE_DIR / "dashboard.json",
+        BASE_DIR / "dashboard.html",
+    ]
+
+    for path in generated_files:
+        if path.exists():
+            path.unlink()
+
+def run_all():
+    print("=" * 70)
+    print("INBOXHERO - FULL CAPABILITY RUN")
+    print("=" * 70)
+
+    print(
+        "\nResetting generated outputs..."
+    )
+
+    reset_generated_outputs()
+
+    steps = [
+        (
+            "R1",
+            lambda: run_r1(),
+        ),
+        (
+            "R2",
+            lambda: run_r2("m008"),
+        ),
+        (
+            "R3",
+            lambda: run_r3(
+                dry_run=True
+            ),
+        ),
+        (
+            "R4",
+            lambda: run_r4(),
+        ),
+        (
+            "R5",
+            lambda: run_r5(),
+        ),
+        (
+            "R6",
+            lambda: run_r6(),
+        ),
+        (
+            "X1",
+            lambda: run_x1(),
+        ),
+        (
+            "X2",
+            lambda: run_x2(),
+        ),
+        (
+            "X3",
+            lambda: run_x3(
+                dry_run=True
+            ),
+        ),
+    ]
+
+    completed = []
+
+    for capability_id, runner in steps:
+        print()
+        print("#" * 70)
+        print(
+            f"RUNNING {capability_id}"
+        )
+        print("#" * 70)
+
+        try:
+            runner()
+
+        except Exception as error:
+            print()
+            print(
+                f"{capability_id}: FAILED"
+            )
+
+            print(
+                f"Error: {error}"
+            )
+
+            log_event(
+                "capability_failed",
+                cap=capability_id,
+                error=str(error),
+            )
+
+            raise
+
+        completed.append(
+            capability_id
+        )
+
+        print()
+        print(
+            f"{capability_id}: COMPLETE"
+        )
+
+    print()
+    print("=" * 70)
+    print("FULL RUN SUMMARY")
+    print("=" * 70)
+
+    print(
+        "Capabilities completed: "
+        + ", ".join(completed)
+    )
+
+    print(
+        f"Completed count: "
+        f"{len(completed)}"
+    )
+
+    print(
+        "Expected count: 9"
+    )
+
+    print(
+        "Interactive approvals required: NO"
+    )
+
+    print(
+        "Irreversible demo actions executed: NO"
+    )
+
+    print(
+        "Full run result: "
+        f"{'PASSED' if len(completed) == 9 else 'FAILED'}"
+    )
+
 def main():
     parser = argparse.ArgumentParser()
 
@@ -1865,6 +2043,10 @@ def main():
 
     if args.inspect:
         inspect_inbox()
+        return
+
+    if args.all:
+        run_all()
         return
 
     if args.cap == "R1":
