@@ -1,0 +1,209 @@
+{
+  "messages_processed": 100,
+  "rule_handled": 28,
+  "model_calls_avoided": 28,
+  "groups": {
+    "read_automated_notification": [
+      {
+        "message_id": "m096",
+        "disposition": "archive",
+        "reason": "Previously read automated notification with no detected request or risk signal.",
+        "handled_by": "rule",
+        "rule_name": "read_automated_notification"
+      },
+      {
+        "message_id": "m072",
+        "disposition": "archive",
+        "reason": "Previously read automated notification with no detected request or risk signal.",
+        "handled_by": "rule",
+        "rule_name": "read_automated_notification"
+      },
+      {
+        "message_id": "m114",
+        "disposition": "archive",
+        "reason": "Previously read automated notification with no detected request or risk signal.",
+        "handled_by": "rule",
+        "rule_name": "read_automated_notification"
+      },
+      {
+        "message_id": "m111",
+        "disposition": "archive",
+        "reason": "Previously read automated notification with no detected request or risk signal.",
+        "handled_by": "rule",
+        "rule_name": "read_automated_notification"
+      }
+    ],
+    "informational_subject": [
+      {
+        "message_id": "m112",
+        "disposition": "archive",
+        "reason": "Informational automated message with no clear action required.",
+        "handled_by": "rule",
+        "rule_name": "informational_subject"
+      },
+      {
+        "message_id": "m097",
+        "disposition": "archive",
+        "reason": "Informational automated message with no clear action required.",
+        "handled_by": "rule",
+        "rule_name": "informational_subject"
+      },
+      {
+        "message_id": "m073",
+        "disposition": "archive",
+        "reason": "Informational automated message with no clear action required.",
+        "handled_by": "rule",
+        "rule_name": "informational_subject"
+      },
+      {
+        "message_id": "m089",
+        "disposition": "archive",
+        "reason": "Informational automated message with no clear action required.",
+        "handled_by": "rule",
+        "rule_name": "informational_subject"
+      },
+      {
+        "message_id": "m106",
+        "disposition": "archive",
+        "reason": "Informational automated message with no clear action required.",
+        "handled_by": "rule",
+        "rule_name": "informational_subject"
+      },
+      {
+        "message_id": "m099",
+        "disposition": "archive",
+        "reason": "Informational automated message with no clear action required.",
+        "handled_by": "rule",
+        "rule_name": "informational_subject"
+      },
+      {
+        "message_id": "m107",
+        "disposition": "archive",
+        "reason": "Informational automated message with no clear action required.",
+        "handled_by": "rule",
+        "rule_name": "informational_subject"
+      },
+      {
+        "message_id": "m084",
+        "disposition": "archive",
+        "reason": "Informational automated message with no clear action required.",
+        "handled_by": "rule",
+        "rule_name": "informational_subject"
+      },
+      {
+        "message_id": "m100",
+        "disposition": "archive",
+        "reason": "Informational automated message with no clear action required.",
+        "handled_by": "rule",
+        "rule_name": "informational_subject"
+      },
+      {
+        "message_id": "m077",
+        "disposition": "archive",
+        "reason": "Informational automated message with no clear action required.",
+        "handled_by": "rule",
+        "rule_name": "informational_subject"
+      },
+      {
+        "message_id": "m069",
+        "disposition": "archive",
+        "reason": "Informational automated message with no clear action required.",
+        "handled_by": "rule",
+        "rule_name": "informational_subject"
+      },
+      {
+        "message_id": "m093",
+        "disposition": "archive",
+        "reason": "Informational automated message with no clear action required.",
+        "handled_by": "rule",
+        "rule_name": "informational_subject"
+      },
+      {
+        "message_id": "m110",
+        "disposition": "archive",
+        "reason": "Informational automated message with no clear action required.",
+        "handled_by": "rule",
+        "rule_name": "informational_subject"
+      },
+      {
+        "message_id": "m102",
+        "disposition": "archive",
+        "reason": "Informational automated message with no clear action required.",
+        "handled_by": "rule",
+        "rule_name": "informational_subject"
+      },
+      {
+        "message_id": "m063",
+        "disposition": "archive",
+        "reason": "Informational automated message with no clear action required.",
+        "handled_by": "rule",
+        "rule_name": "informational_subject"
+      }
+    ],
+    "informational_body": [
+      {
+        "message_id": "m104",
+        "disposition": "archive",
+        "reason": "Message explicitly indicates that it is informational or requires no action.",
+        "handled_by": "rule",
+        "rule_name": "informational_body"
+      },
+      {
+        "message_id": "m082",
+        "disposition": "archive",
+        "reason": "Message explicitly indicates that it is informational or requires no action.",
+        "handled_by": "rule",
+        "rule_name": "informational_body"
+      },
+      {
+        "message_id": "m075",
+        "disposition": "archive",
+        "reason": "Message explicitly indicates that it is informational or requires no action.",
+        "handled_by": "rule",
+        "rule_name": "informational_body"
+      },
+      {
+        "message_id": "m115",
+        "disposition": "archive",
+        "reason": "Message explicitly indicates that it is informational or requires no action.",
+        "handled_by": "rule",
+        "rule_name": "informational_body"
+      },
+      {
+        "message_id": "m108",
+        "disposition": "archive",
+        "reason": "Message explicitly indicates that it is informational or requires no action.",
+        "handled_by": "rule",
+        "rule_name": "informational_body"
+      },
+      {
+        "message_id": "m116",
+        "disposition": "archive",
+        "reason": "Message explicitly indicates that it is informational or requires no action.",
+        "handled_by": "rule",
+        "rule_name": "informational_body"
+      },
+      {
+        "message_id": "m049",
+        "disposition": "archive",
+        "reason": "Message explicitly indicates that it is informational or requires no action.",
+        "handled_by": "rule",
+        "rule_name": "informational_body"
+      },
+      {
+        "message_id": "m053",
+        "disposition": "archive",
+        "reason": "Message explicitly indicates that it is informational or requires no action.",
+        "handled_by": "rule",
+        "rule_name": "informational_body"
+      },
+      {
+        "message_id": "m103",
+        "disposition": "archive",
+        "reason": "Message explicitly indicates that it is informational or requires no action.",
+        "handled_by": "rule",
+        "rule_name": "informational_body"
+      }
+    ]
+  }
+}

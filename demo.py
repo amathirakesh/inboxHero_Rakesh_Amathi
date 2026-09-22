@@ -68,6 +68,10 @@ FLAGGED_FILE = (
     ARTIFACTS_DIR /
     "flagged.json"
 )
+NOISE_REPORT_FILE = (
+    ARTIFACTS_DIR /
+    "noise_report.json"
+)
 
 def run_worker(command):
     try:
@@ -1100,6 +1104,118 @@ def run_r6():
         passed=success,
     )
 
+def run_x1():
+    print("=" * 70)
+    print("X1 - RULE-HANDLED NOISE REPORT")
+    print("=" * 70)
+
+    ARTIFACTS_DIR.mkdir(
+        parents=True,
+        exist_ok=True
+    )
+
+    store = InboxStore()
+
+    rule_decisions = []
+
+    for message in store.all_messages():
+        decision = route_by_rule(
+            message
+        )
+
+        if decision is None:
+            continue
+
+        rule_decisions.append(
+            decision
+        )
+
+    grouped = {}
+
+    for decision in rule_decisions:
+        rule_name = (
+            decision.rule_name
+            or "unknown_rule"
+        )
+
+        grouped.setdefault(
+            rule_name,
+            []
+        ).append(
+            decision.to_dict()
+        )
+
+    report = {
+        "messages_processed":
+            store.count(),
+
+        "rule_handled":
+            len(rule_decisions),
+
+        "model_calls_avoided":
+            len(rule_decisions),
+
+        "groups":
+            grouped,
+    }
+
+    NOISE_REPORT_FILE.write_text(
+        json.dumps(
+            report,
+            indent=2,
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+
+    print(
+        f"Messages processed: "
+        f"{store.count()}"
+    )
+
+    print(
+        f"Rule handled: "
+        f"{len(rule_decisions)}"
+    )
+
+    print(
+        f"Model calls avoided: "
+        f"{len(rule_decisions)}"
+    )
+
+    print()
+
+    for rule_name, decisions in grouped.items():
+        print(
+            f"{rule_name}: "
+            f"{len(decisions)}"
+        )
+
+        for decision in decisions:
+            print(
+                f"  {decision['message_id']} "
+                f"=> "
+                f"{decision['disposition']}"
+            )
+
+    print()
+    print(
+        "Artifact: "
+        "artifacts/noise_report.json"
+    )
+
+    log_event(
+        "run_summary",
+        cap="X1",
+        messages_processed=store.count(),
+        rule_handled=len(
+            rule_decisions
+        ),
+        model_calls_avoided=len(
+            rule_decisions
+        ),
+    )
+
 def main():
     parser = argparse.ArgumentParser()
 
@@ -1157,6 +1273,9 @@ def main():
         return
     if args.cap == "R6":
         run_r6()
+        return
+    if args.cap == "X1":
+        run_x1()
         return
 
     print(
