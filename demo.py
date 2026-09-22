@@ -20,6 +20,13 @@ from drafting import (
     validate_citations,
 )
 
+from actions import (
+    ActionProposal,
+    ActionExecutor,
+)
+
+from action_gate import ActionGate
+
 from models import Decision
 
 from rule_router import route_by_rule
@@ -38,6 +45,10 @@ DECISIONS_FILE = (
 )
 DRAFTS_FILE = (
     ARTIFACTS_DIR / "drafts.json"
+)
+PENDING_ACTIONS_FILE = (
+    ARTIFACTS_DIR /
+    "pending_actions.json"
 )
 
 def inspect_inbox():
@@ -469,6 +480,153 @@ def run_r2(message_id="m008"):
         "\nCitation validation: PASSED"
     )
 
+def run_r3(dry_run=False):
+    print("=" * 70)
+    print("R3 - GATE IRREVERSIBLE ACTIONS")
+    print("=" * 70)
+
+    ARTIFACTS_DIR.mkdir(
+        parents=True,
+        exist_ok=True
+    )
+
+    store = InboxStore()
+
+    target = store.get_message(
+        "m008"
+    )
+
+    if not target:
+        print(
+            "Demo message m008 "
+            "was not found."
+        )
+        return
+
+    # IMPORTANT:
+    # The proposed recipient comes from the actual
+    # message sender, not from an arbitrary address
+    # embedded in the email body.
+    proposal = ActionProposal(
+        action_id="R3-m008-send",
+        message_id="m008",
+        action_type="send",
+        reason=(
+            "A reply has been proposed, but sending "
+            "email is an irreversible external action."
+        ),
+        payload={
+            "to": target["from"],
+            "subject": (
+                f"Re: {target['subject']}"
+            ),
+            "body": (
+                "I found relevant information in the "
+                "earlier thread. Because it contains "
+                "sensitive credentials, I won't resend "
+                "the secret over email. I can share it "
+                "through an approved secure channel."
+            ),
+        },
+    )
+
+    print(
+        f"Proposed action: "
+        f"{proposal.action_type}"
+    )
+
+    print(
+        f"Message: "
+        f"{proposal.message_id}"
+    )
+
+    print(
+        f"Recipient: "
+        f"{proposal.payload['to']}"
+    )
+
+    print(
+        f"Reason: "
+        f"{proposal.reason}"
+    )
+
+    gate = ActionGate()
+
+    result = gate.evaluate(
+        proposal,
+        dry_run=dry_run,
+    )
+
+    artifact = {
+        **proposal.to_dict(),
+        "dry_run": dry_run,
+        "human_response":
+            result.human_response,
+        "allowed":
+            result.allowed,
+        "outcome":
+            result.outcome,
+    }
+
+    if not result.allowed:
+        PENDING_ACTIONS_FILE.write_text(
+            json.dumps(
+                [artifact],
+                indent=2,
+                ensure_ascii=False,
+            ),
+            encoding="utf-8",
+        )
+
+        print()
+        print(
+            "Action executed: NO"
+        )
+
+        print(
+            f"Outcome: {result.outcome}"
+        )
+
+        return
+
+    executor = ActionExecutor()
+
+    execution = executor.execute(
+        proposal
+    )
+
+    artifact["execution"] = execution
+
+    PENDING_ACTIONS_FILE.write_text(
+        json.dumps(
+            [artifact],
+            indent=2,
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+
+    log_event(
+        "action_execution",
+        cap="R3",
+        action_id=proposal.action_id,
+        message_id=proposal.message_id,
+        action_type=proposal.action_type,
+        outcome=execution["status"],
+        output_file=execution[
+            "output_file"
+        ],
+    )
+
+    print()
+    print(
+        "Action executed: YES"
+    )
+
+    print(
+        f"Output: "
+        f"{execution['output_file']}"
+    )
 
 def main():
     parser = argparse.ArgumentParser()
@@ -509,6 +667,12 @@ def main():
     if args.cap == "R2":
         run_r2(
             args.msg or "m008"
+        )
+        return
+    
+    if args.cap == "R3":
+        run_r3(
+            dry_run=args.dry_run
         )
         return
 

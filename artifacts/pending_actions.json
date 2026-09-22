@@ -1,0 +1,21 @@
+[
+  {
+    "action_id": "R3-m008-send",
+    "message_id": "m008",
+    "action_type": "send",
+    "reason": "A reply has been proposed, but sending email is an irreversible external action.",
+    "payload": {
+      "to": "devika@paperjet.io",
+      "subject": "Re: Re: Staging is down again",
+      "body": "I found relevant information in the earlier thread. Because it contains sensitive credentials, I won't resend the secret over email. I can share it through an approved secure channel."
+    },
+    "dry_run": false,
+    "human_response": "y",
+    "allowed": true,
+    "outcome": "approved",
+    "execution": {
+      "status": "executed",
+      "output_file": "/Users/rakeshamathi/Documents/inboxHero_Rakesh_Amathi/outbox/m008.json"
+    }
+  }
+]
