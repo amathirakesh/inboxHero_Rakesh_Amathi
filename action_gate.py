@@ -20,6 +20,7 @@ class ActionGate:
         self,
         proposal,
         dry_run=False,
+        cap="R3",
     ):
         irreversible = is_irreversible(
             proposal.action_type
@@ -27,7 +28,7 @@ class ActionGate:
 
         log_event(
             "gate_proposed",
-            cap="R3",
+            cap=cap,
             action_id=proposal.action_id,
             message_id=proposal.message_id,
             action_type=proposal.action_type,
@@ -49,7 +50,8 @@ class ActionGate:
 
             self._log_result(
                 proposal,
-                result
+                result,
+                cap,
             )
 
             return result
@@ -68,7 +70,8 @@ class ActionGate:
 
             self._log_result(
                 proposal,
-                result
+                result,
+                cap,
             )
 
             return result
@@ -122,7 +125,8 @@ class ActionGate:
 
         self._log_result(
             proposal,
-            result
+            result,
+            cap,
         )
 
         return result
@@ -131,10 +135,11 @@ class ActionGate:
         self,
         proposal,
         result,
+        cap,
     ):
         log_event(
             "gate_decision",
-            cap="R3",
+            cap=cap,
             action_id=proposal.action_id,
             message_id=proposal.message_id,
             action_type=proposal.action_type,

@@ -1,0 +1,35 @@
+[
+  {
+    "target_message_id": "m043",
+    "preference_source_message_id": "m041",
+    "requested_slot": {
+      "date": "2026-09-14",
+      "time": "09:00"
+    },
+    "preference": {
+      "meeting_not_before": "11:00"
+    },
+    "preference_conflict": true,
+    "requested_slot_conflicts": [],
+    "existing_calendar_conflicts": [
+      "commit-investor-call",
+      "commit-dentist"
+    ],
+    "proposed_alternative": {
+      "date": "2026-09-14",
+      "time": "11:00"
+    },
+    "alternative_slot_conflicts": [],
+    "source_message_ids": [
+      "m041",
+      "m043"
+    ],
+    "proposed_reply": "Thanks for the option. 09:00 is earlier than I schedule meetings. Could we do 11:00 or later that day instead?",
+    "dry_run": true,
+    "gate": {
+      "allowed": false,
+      "human_response": "not_requested_dry_run",
+      "outcome": "blocked_by_dry_run"
+    }
+  }
+]

@@ -40,6 +40,22 @@ from thread_summary import (
     validate_source_ids,
 )
 
+from scheduling import (
+    resolve_meeting_request,
+    slot_conflicts,
+    existing_calendar_conflicts,
+)
+
+from commitments import (
+    build_commitments,
+)
+
+from preferences import (
+    PreferenceStore,
+    extract_meeting_preference,
+    time_to_minutes,
+)
+
 from actions import (
     ActionProposal,
     ActionExecutor,
@@ -81,6 +97,10 @@ NOISE_REPORT_FILE = (
 THREAD_SUMMARY_FILE = (
     ARTIFACTS_DIR /
     "thread_summary.json"
+)
+SCHEDULING_PROPOSALS_FILE = (
+    ARTIFACTS_DIR /
+    "scheduling_proposals.json"
 )
 
 def run_worker(command):
@@ -1429,6 +1449,392 @@ def run_x2():
         citations_valid=True,
     )
 
+def run_x3(dry_run=False):
+    print("=" * 70)
+    print("X3 - CONFLICT-AWARE SCHEDULING ASSISTANT")
+    print("=" * 70)
+
+    ARTIFACTS_DIR.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+    store = InboxStore()
+
+    request_message = store.get_message(
+        "m043"
+    )
+
+    preference_message = store.get_message(
+        "m041"
+    )
+
+    if not request_message:
+        print("m043 not found")
+        return
+
+    if not preference_message:
+        print("m041 not found")
+        return
+
+    preference_store = PreferenceStore()
+
+    preference = preference_store.get(
+        "meeting_not_before"
+    )
+
+    # X3 must work independently on a fresh checkout.
+    # If R4 has not been run before, bootstrap the safe
+    # preference directly from its source message.
+    if not preference:
+        extracted = (
+            extract_meeting_preference(
+                preference_message
+            )
+        )
+
+        if not extracted:
+            print(
+                "Could not extract meeting preference"
+            )
+            return
+
+        preference_store.save_preference(
+            key=extracted["key"],
+            value=extracted["value"],
+            source_message_id="m041",
+        )
+
+        preference = (
+            preference_store.get(
+                "meeting_not_before"
+            )
+        )
+
+        log_event(
+            "preference_write",
+            cap="X3",
+            key="meeting_not_before",
+            value=preference["value"],
+            source_message_id="m041",
+        )
+
+    request = resolve_meeting_request(
+        request_message
+    )
+
+    earliest_allowed = (
+        preference["value"]
+    )
+
+    preference_conflict = (
+        time_to_minutes(
+            request["time"]
+        )
+        <
+        time_to_minutes(
+            earliest_allowed
+        )
+    )
+
+    commitments = build_commitments(
+        store
+    )
+
+    requested_slot_conflicts = (
+        slot_conflicts(
+            request["date"],
+            request["time"],
+            commitments,
+        )
+    )
+
+    existing_conflicts = (
+        existing_calendar_conflicts(
+            commitments
+        )
+    )
+
+    alternative_time = (
+        earliest_allowed
+        if preference_conflict
+        else request["time"]
+    )
+
+    alternative_conflicts = (
+        slot_conflicts(
+            request["date"],
+            alternative_time,
+            commitments,
+        )
+    )
+
+    print(
+        f"Request message: m043"
+    )
+
+    print(
+        f"Requested slot: "
+        f"{request['date']} "
+        f"{request['time']}"
+    )
+
+    print(
+        f"Stored earliest meeting time: "
+        f"{earliest_allowed}"
+    )
+
+    print(
+        "Preference conflict: "
+        f"{'YES' if preference_conflict else 'NO'}"
+    )
+
+    print(
+        "Requested-slot calendar conflicts: "
+        f"{len(requested_slot_conflicts)}"
+    )
+
+    print(
+        "Existing conflicting commitments: "
+        f"{len(existing_conflicts)}"
+    )
+
+    print(
+        f"Proposed alternative: "
+        f"{request['date']} "
+        f"{alternative_time}"
+    )
+
+    print(
+        "Alternative-slot conflicts: "
+        f"{len(alternative_conflicts)}"
+    )
+
+    if alternative_conflicts:
+        print(
+            "\nAlternative is not safe to propose "
+            "because it conflicts with an existing "
+            "commitment."
+        )
+
+        log_event(
+            "scheduling_blocked",
+            cap="X3",
+            message_id="m043",
+            reason=(
+                "Alternative slot conflicts "
+                "with existing commitment."
+            ),
+        )
+
+        return
+
+    if preference_conflict:
+        reply_body = (
+            "Thanks for the option. "
+            f"{request['time']} is earlier than "
+            "I schedule meetings. "
+            f"Could we do {alternative_time} "
+            "or later that day instead?"
+        )
+
+    else:
+        reply_body = (
+            "Thanks for the option. "
+            f"{request['time']} works from a "
+            "scheduling-preference perspective."
+        )
+
+    proposal = ActionProposal(
+        action_id="X3-m043-scheduling-reply",
+        message_id="m043",
+        action_type="send",
+        reason=(
+            "Scheduling reply is an external "
+            "irreversible action and requires "
+            "human approval."
+        ),
+        payload={
+            "to":
+                request_message["from"],
+
+            "subject":
+                f"Re: "
+                f"{request_message['subject']}",
+
+            "body":
+                reply_body,
+        },
+    )
+
+    result_record = {
+        "target_message_id":
+            "m043",
+
+        "preference_source_message_id":
+            "m041",
+
+        "requested_slot":
+            {
+                "date":
+                    request["date"],
+
+                "time":
+                    request["time"],
+            },
+
+        "preference":
+            {
+                "meeting_not_before":
+                    earliest_allowed,
+            },
+
+        "preference_conflict":
+            preference_conflict,
+
+        "requested_slot_conflicts":
+            [
+                item["id"]
+                for item
+                in requested_slot_conflicts
+            ],
+
+        "existing_calendar_conflicts":
+            [
+                item["id"]
+                for item
+                in existing_conflicts
+            ],
+
+        "proposed_alternative":
+            {
+                "date":
+                    request["date"],
+
+                "time":
+                    alternative_time,
+            },
+
+        "alternative_slot_conflicts":
+            [
+                item["id"]
+                for item
+                in alternative_conflicts
+            ],
+
+        "source_message_ids":
+            [
+                "m041",
+                "m043",
+            ],
+
+        "proposed_reply":
+            reply_body,
+
+        "dry_run":
+            dry_run,
+    }
+
+    gate = ActionGate()
+
+    gate_result = gate.evaluate(
+        proposal,
+        dry_run=dry_run,
+        cap="X3",
+    )
+
+    result_record[
+        "gate"
+    ] = {
+        "allowed":
+            gate_result.allowed,
+
+        "human_response":
+            gate_result.human_response,
+
+        "outcome":
+            gate_result.outcome,
+    }
+
+    if gate_result.allowed:
+        executor = ActionExecutor()
+
+        execution = executor.execute(
+            proposal
+        )
+
+        result_record[
+            "execution"
+        ] = execution
+
+        log_event(
+            "action_execution",
+            cap="X3",
+            action_id=proposal.action_id,
+            message_id="m043",
+            action_type="send",
+            outcome=execution["status"],
+            output_file=execution[
+                "output_file"
+            ],
+        )
+
+    SCHEDULING_PROPOSALS_FILE.write_text(
+        json.dumps(
+            [result_record],
+            indent=2,
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+
+    log_event(
+        "scheduling_proposal",
+        cap="X3",
+        message_id="m043",
+        preference_source="m041",
+        requested_date=request[
+            "date"
+        ],
+        requested_time=request[
+            "time"
+        ],
+        alternative_time=(
+            alternative_time
+        ),
+        preference_conflict=(
+            preference_conflict
+        ),
+        alternative_conflicts=len(
+            alternative_conflicts
+        ),
+        gate_outcome=(
+            gate_result.outcome
+        ),
+    )
+
+    print()
+    print("PROPOSED REPLY")
+    print("-" * 70)
+    print(reply_body)
+    print("-" * 70)
+
+    print()
+    print(
+        "Gate outcome: "
+        f"{gate_result.outcome}"
+    )
+
+    print(
+        "Action executed: "
+        f"{'YES' if gate_result.allowed else 'NO'}"
+    )
+
+    print(
+        "Artifact: "
+        "artifacts/scheduling_proposals.json"
+    )
+
 def main():
     parser = argparse.ArgumentParser()
 
@@ -1492,6 +1898,11 @@ def main():
         return
     if args.cap == "X2":
         run_x2()
+        return
+    if args.cap == "X3":
+        run_x3(
+            dry_run=args.dry_run
+        )
         return
 
     print(
