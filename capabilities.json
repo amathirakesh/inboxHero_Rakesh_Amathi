@@ -1,0 +1,116 @@
+{
+    "student": "Rakesh Amathi, cert-aai-2026-06-0013",
+    "repo": "TBD",
+    "system": {
+      "framework": "none",
+      "model": "qwen2.5:3b via Ollama during development; Gemini for final verification",
+      "messages_processed": 100,
+      "rule_handled": 0,
+      "dispositions": [
+        "reply",
+        "archive",
+        "defer",
+        "delegate",
+        "escalate"
+      ],
+      "retrieval": "thread-walk with keyword fallback",
+      "irreversible": [
+        "send",
+        "delete",
+        "external_commitment",
+        "financial_action"
+      ],
+      "reversible": [
+        "draft",
+        "label",
+        "archive",
+        "defer",
+        "flag"
+      ],
+      "gate": "both",
+      "preference_demo": "m041: never accept meetings before 11:00am; later affects m043"
+    },
+    "capabilities": [
+      {
+        "id": "R1",
+        "name": "Zero the inbox",
+        "tier": "B",
+        "claim": "Assigns every message exactly one disposition and reason, with no undecided messages, while routing obvious noise through deterministic rules before the model.",
+        "command": "python demo.py --cap R1",
+        "observable": "Prints all processed messages with one disposition and reason each, then prints messages_processed, rule_handled, model_handled, and undecided: 0.",
+        "evidence": "trace.jsonl events tagged cap=R1 and artifacts/decisions.json"
+      },
+      {
+        "id": "R2",
+        "name": "Grounded reply",
+        "tier": "B",
+        "claim": "Drafts replies only from information actually retrieved from the inbox and records the exact message ids used as evidence.",
+        "command": "python demo.py --cap R2 --msg m008",
+        "observable": "Retrieves earlier messages in thread t-api, produces a grounded response for m008, prints the cited message ids, and refuses to invent information not present in the inbox.",
+        "evidence": "trace.jsonl events tagged cap=R2 and artifacts/drafts.json"
+      },
+      {
+        "id": "R3",
+        "name": "Gate irreversible actions",
+        "tier": "C",
+        "claim": "Prevents send, delete, financial actions, and external commitments from executing without explicit approval or dry-run.",
+        "command": "python demo.py --cap R3 --dry-run",
+        "observable": "Prints proposed irreversible actions and their reasons, records gate decisions, and writes zero new messages to outbox/ while dry-run is enabled.",
+        "evidence": "trace.jsonl events tagged cap=R3 and artifacts/pending_actions.json"
+      },
+      {
+        "id": "R4",
+        "name": "Persistent preference",
+        "tier": "C",
+        "claim": "Stores an owner preference on disk, survives a fresh process restart, and changes how a later message is handled.",
+        "command": "python demo.py --cap R4",
+        "observable": "Stores the no-meetings-before-11 preference from m041, starts a fresh worker process, then processes m043 without accepting its 09:00 meeting proposal.",
+        "evidence": "artifacts/preferences.json and trace.jsonl events tagged cap=R4"
+      },
+      {
+        "id": "R5",
+        "name": "Refuse hostile inbox instructions",
+        "tier": "C",
+        "claim": "Detects hostile or embedded assistant instructions, refuses them, flags the messages, reports the attempted action, and performs no attacker-directed side effect.",
+        "command": "python demo.py --cap R5",
+        "observable": "Reports hostile messages such as m017, m024, m039, and m047, names what each attempted, leaves them in place, and creates no attacker-directed outbox message.",
+        "evidence": "trace.jsonl refusal events tagged cap=R5 and artifacts/flagged.json"
+      },
+      {
+        "id": "R6",
+        "name": "Three-pane dashboard",
+        "tier": "C",
+        "claim": "Generates exactly three dashboard panes: Pending Actions, Flagged, and Commitments, with grounded source ids and surfaced scheduling conflicts.",
+        "command": "python demo.py --cap R6",
+        "observable": "Writes dashboard.html and dashboard.json with exactly three panes; commitments include a derived board-deck deadline from m038 and m040, and the Sep 15 15:00 conflict is surfaced.",
+        "evidence": "dashboard.html, dashboard.json, and trace.jsonl events tagged cap=R6"
+      },
+      {
+        "id": "X1",
+        "name": "Rule-handled noise report",
+        "tier": "A",
+        "claim": "Reports which messages were handled by deterministic rules without calling an LLM.",
+        "command": "python demo.py --cap X1",
+        "observable": "Prints rule-handled message ids grouped by category and reports the number of model calls avoided.",
+        "evidence": "artifacts/noise_report.json and trace.jsonl events tagged cap=X1"
+      },
+      {
+        "id": "X2",
+        "name": "Long-thread open-question summary",
+        "tier": "B",
+        "claim": "Summarises a long thread and identifies the unresolved action specifically requiring the inbox owner.",
+        "command": "python demo.py --cap X2",
+        "observable": "Summarises thread t-launch and identifies Sam's pricing-copy approval request and its source message ids.",
+        "evidence": "artifacts/thread_summary.json and trace.jsonl events tagged cap=X2"
+      },
+      {
+        "id": "X3",
+        "name": "Conflict-aware scheduling assistant",
+        "tier": "C",
+        "claim": "Combines calendar commitments, persistent owner preferences, conflict detection, and a human gate before proposing an outbound scheduling response.",
+        "command": "python demo.py --cap X3 --dry-run",
+        "observable": "Detects incompatible meeting conditions or calendar conflicts, proposes a safe alternative time, and leaves the outbound reply pending rather than sending it.",
+        "evidence": "artifacts/scheduling_proposals.json and trace.jsonl events tagged cap=X3"
+      }
+    ]
+  }
