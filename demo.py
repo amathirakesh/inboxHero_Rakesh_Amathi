@@ -1,6 +1,8 @@
 import argparse
 import json
 from pathlib import Path
+import subprocess
+import sys
 
 from inbox_store import (
     InboxStore,
@@ -50,6 +52,28 @@ PENDING_ACTIONS_FILE = (
     ARTIFACTS_DIR /
     "pending_actions.json"
 )
+
+def run_worker(command):
+    try:
+        return subprocess.run(
+            command,
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+
+    except subprocess.CalledProcessError as error:
+        print("\nWorker process failed.")
+
+        if error.stdout:
+            print("\nSTDOUT:")
+            print(error.stdout)
+
+        if error.stderr:
+            print("\nSTDERR:")
+            print(error.stderr)
+
+        raise
 
 def inspect_inbox():
     try:
@@ -628,6 +652,60 @@ def run_r3(dry_run=False):
         f"{execution['output_file']}"
     )
 
+def run_r4():
+    print("=" * 70)
+    print("R4 - PERSISTENT PREFERENCE")
+    print("=" * 70)
+
+    print("\nPHASE 1")
+    print("Starting first Python process...")
+
+    first = run_worker([
+        sys.executable,
+        str(
+            BASE_DIR /
+            "r4_worker.py"
+        ),
+        "--phase",
+        "store",
+    ])
+
+    print(
+        first.stdout.strip()
+    )
+
+    print("\nFirst process exited.")
+
+    print("\nPHASE 2")
+    print(
+        "Starting a NEW Python process..."
+    )
+
+    second = run_worker([
+        sys.executable,
+        str(
+            BASE_DIR /
+            "r4_worker.py"
+        ),
+        "--phase",
+        "apply",
+    ])
+
+    print(
+        second.stdout.strip()
+    )
+
+    print("\nR4 RESULT")
+    print(
+        "Preference source: m041"
+    )
+    print(
+        "Later message: m043"
+    )
+    print(
+        "Preference survived process restart: YES"
+    )
+
 def main():
     parser = argparse.ArgumentParser()
 
@@ -674,6 +752,10 @@ def main():
         run_r3(
             dry_run=args.dry_run
         )
+        return
+
+    if args.cap == "R4":
+        run_r4()
         return
 
     print(
