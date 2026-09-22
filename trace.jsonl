@@ -200,3 +200,13 @@
 {"timestamp": "2026-09-22T15:27:12.786608+00:00", "event": "message_read", "cap": "R1", "message_id": "m071"}
 {"timestamp": "2026-09-22T15:27:13.986655+00:00", "event": "decision", "cap": "R1", "message_id": "m071", "disposition": "archive", "reason": "The email contains information about an invoice and no further action is required.", "handled_by": "model", "rule_name": null}
 {"timestamp": "2026-09-22T15:27:13.999973+00:00", "event": "run_summary", "cap": "R1", "messages_processed": 100, "rule_handled": 28, "model_handled": 72, "model_failures": 0, "undecided": 0, "duplicate_decisions": 0}
+{"timestamp": "2026-09-22T15:41:18.881244+00:00", "event": "retrieval", "cap": "R2", "target_message_id": "m012", "strategy": "thread-walk", "retrieved_message_ids": []}
+{"timestamp": "2026-09-22T15:41:18.883706+00:00", "event": "draft_skipped", "cap": "R2", "target_message_id": "m012", "reason": "No supporting evidence was retrieved."}
+{"timestamp": "2026-09-22T15:41:28.273395+00:00", "event": "retrieval", "cap": "R2", "target_message_id": "m008", "strategy": "thread-walk", "retrieved_message_ids": ["m001", "m003", "m005"]}
+{"timestamp": "2026-09-22T15:41:43.168275+00:00", "event": "citation_validation", "cap": "R2", "target_message_id": "m008", "cited_message_ids": ["m003"], "valid": true}
+{"timestamp": "2026-09-22T15:41:43.169239+00:00", "event": "draft", "cap": "R2", "target_message_id": "m008", "cited_message_ids": ["m003"]}
+{"timestamp": "2026-09-22T15:41:53.333582+00:00", "event": "retrieval", "cap": "R2", "target_message_id": "m008", "strategy": "thread-walk", "retrieved_message_ids": ["m001", "m003", "m005"]}
+{"timestamp": "2026-09-22T15:41:56.140294+00:00", "event": "citation_validation", "cap": "R2", "target_message_id": "m008", "cited_message_ids": ["m003"], "valid": true}
+{"timestamp": "2026-09-22T15:41:56.140597+00:00", "event": "draft", "cap": "R2", "target_message_id": "m008", "cited_message_ids": ["m003"]}
+{"timestamp": "2026-09-22T15:43:28.728430+00:00", "event": "retrieval", "cap": "R2", "target_message_id": "m012", "strategy": "thread-walk", "retrieved_message_ids": []}
+{"timestamp": "2026-09-22T15:43:28.729798+00:00", "event": "draft_skipped", "cap": "R2", "target_message_id": "m012", "reason": "No supporting evidence was retrieved."}

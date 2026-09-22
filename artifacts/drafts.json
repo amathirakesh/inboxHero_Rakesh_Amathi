@@ -1,0 +1,16 @@
+[
+  {
+    "target_message_id": "m008",
+    "retrieval_strategy": "thread-walk",
+    "read_set": [
+      "m001",
+      "m003",
+      "m005"
+    ],
+    "can_draft": true,
+    "draft": "Hi Sam,\n\nI have the staging queue credentials for you. The new staging AMQP URL is amqp://[REDACTED_USER]:[REDACTED_SECRET]@broker-stg.paperjet.io:5672/pjs. Please point the worker at this URL and restart it.\n\nThanks,\nRaghav",
+    "cited_message_ids": [
+      "m003"
+    ]
+  }
+]

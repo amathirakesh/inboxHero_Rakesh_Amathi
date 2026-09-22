@@ -12,6 +12,14 @@ from llm_provider import (
     LLMProviderError,
 )
 
+from retrieval import InboxRetriever
+
+from drafting import (
+    GroundedDrafter,
+    DraftingError,
+    validate_citations,
+)
+
 from models import Decision
 
 from rule_router import route_by_rule
@@ -28,7 +36,9 @@ ARTIFACTS_DIR = BASE_DIR / "artifacts"
 DECISIONS_FILE = (
     ARTIFACTS_DIR / "decisions.json"
 )
-
+DRAFTS_FILE = (
+    ARTIFACTS_DIR / "drafts.json"
+)
 
 def inspect_inbox():
     try:
@@ -240,6 +250,225 @@ def run_r1():
         duplicate_decisions=duplicate_decisions,
     )
 
+def run_r2(message_id="m008"):
+    print("=" * 70)
+    print("R2 - GROUNDED REPLY")
+    print("=" * 70)
+
+    ARTIFACTS_DIR.mkdir(
+        parents=True,
+        exist_ok=True
+    )
+
+    store = InboxStore()
+
+    target = store.get_message(
+        message_id
+    )
+
+    if not target:
+        print(
+            f"Message not found: {message_id}"
+        )
+        return
+
+    retriever = InboxRetriever(
+        store
+    )
+
+    retrieval = (
+        retriever.retrieve_thread_history(
+            message_id
+        )
+    )
+
+    print(
+        f"Target message: {message_id}"
+    )
+
+    print(
+        "Retrieval strategy: "
+        "chronological thread-walk"
+    )
+
+    print(
+        "Retrieved message ids:",
+        sorted(retrieval.read_set)
+    )
+
+    log_event(
+        "retrieval",
+        cap="R2",
+        target_message_id=message_id,
+        strategy="thread-walk",
+        retrieved_message_ids=sorted(
+            retrieval.read_set
+        ),
+    )
+
+    if not retrieval.messages:
+        print(
+            "\nNo earlier evidence found."
+        )
+
+        print(
+            "Draft created: NO"
+        )
+
+        log_event(
+            "draft_skipped",
+            cap="R2",
+            target_message_id=message_id,
+            reason=(
+                "No supporting evidence "
+                "was retrieved."
+            ),
+        )
+
+        return
+
+    drafter = GroundedDrafter()
+
+    try:
+        result = drafter.draft(
+            target,
+            retrieval.messages,
+        )
+
+    except DraftingError as error:
+        print(
+            f"Drafting failed: {error}"
+        )
+
+        log_event(
+            "draft_error",
+            cap="R2",
+            target_message_id=message_id,
+            error=str(error),
+        )
+
+        return
+
+    if not result:
+        print(
+            "Draft created: NO"
+        )
+        return
+
+    if not result["can_draft"]:
+        print(
+            "\nEvidence was insufficient "
+            "for a grounded reply."
+        )
+
+        print(
+            "Draft created: NO"
+        )
+
+        log_event(
+            "draft_skipped",
+            cap="R2",
+            target_message_id=message_id,
+            reason=(
+                "Model determined retrieved "
+                "evidence was insufficient."
+            ),
+        )
+
+        return
+
+    try:
+        validate_citations(
+            result["cited_message_ids"],
+            store,
+            retrieval.read_set,
+        )
+
+    except DraftingError as error:
+        print(
+            f"Citation validation failed: "
+            f"{error}"
+        )
+
+        log_event(
+            "citation_validation_failed",
+            cap="R2",
+            target_message_id=message_id,
+            error=str(error),
+        )
+
+        return
+
+    artifact = {
+        "target_message_id":
+            message_id,
+
+        "retrieval_strategy":
+            "thread-walk",
+
+        "read_set":
+            sorted(
+                retrieval.read_set
+            ),
+
+        "can_draft":
+            True,
+
+        "draft":
+            result["draft"],
+
+        "cited_message_ids":
+            result[
+                "cited_message_ids"
+            ],
+    }
+
+    DRAFTS_FILE.write_text(
+        json.dumps(
+            [artifact],
+            indent=2,
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+
+    log_event(
+        "citation_validation",
+        cap="R2",
+        target_message_id=message_id,
+        cited_message_ids=result[
+            "cited_message_ids"
+        ],
+        valid=True,
+    )
+
+    log_event(
+        "draft",
+        cap="R2",
+        target_message_id=message_id,
+        cited_message_ids=result[
+            "cited_message_ids"
+        ],
+    )
+
+    print("\nDraft created: YES")
+
+    print(
+        "\nCited message ids:",
+        result["cited_message_ids"]
+    )
+
+    print("\nDRAFT")
+    print("-" * 70)
+    print(
+        result["draft"]
+    )
+    print("-" * 70)
+
+    print(
+        "\nCitation validation: PASSED"
+    )
+
 
 def main():
     parser = argparse.ArgumentParser()
@@ -275,6 +504,12 @@ def main():
 
     if args.cap == "R1":
         run_r1()
+        return
+
+    if args.cap == "R2":
+        run_r2(
+            args.msg or "m008"
+        )
         return
 
     print(
